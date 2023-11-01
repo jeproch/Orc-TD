@@ -7,8 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
     );
     
     if (isMobile === true) {
-        window.location.href = './mobileFail/mobile.html'
+        window.location.href = 'mobile.html'
     } else {
-      alert('This website uses cookies to store data');
+      console.log('is pc')
     }
 })
+
+//Start the game
+
+function startButton() {
+  console.log('start')
+  window.location.href = "./game/game.html" 
+}
