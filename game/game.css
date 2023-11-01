@@ -1,0 +1,62 @@
+body {
+    background-color: yellow;
+}
+
+.game .background-image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.hide {
+    opacity: 0;
+    display: none;
+    transition: 0.3s ease-in-out;
+}
+
+.heading-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading-image img {
+    border: 5px solid black;
+    width: 350px;
+    height: 200px;
+    border-radius: 15%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    margin-top: 50px;
+}
+
+.buttons button {
+    background-color: yellow;
+    border: 3px solid black;
+    border-radius: 15%;
+    margin: 5px 0; /* Add margin for spacing between buttons */
+    padding: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 175px;
+}
+
+.buttons button:hover {
+    transition: 0.3s ease-in-out;
+    background-color: black;
+    border: 4px solid yellow;
+    color: yellow;
+    border-radius: 17px;
+    width: 200px;
+}
+
