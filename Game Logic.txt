@@ -1,0 +1,5 @@
+Characters = 20 
+Enemies = 15 
+Waves = generate with progress
+The higher the waves, the more difficult it becomes
+Figure out how to deploy a game as an application
