@@ -8,7 +8,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-image: url("game images/document.jpeg");
+    background-image: url("game images/battleground.png");
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: contain;
@@ -19,14 +19,19 @@ body {
 
 
 .tower {
-    background-color: rgb(153, 255, 0);
-    width: 40vw;
-    height: 50vh;
+    width: 20vw;
     position: absolute;
-    top: 0;
+    bottom: 0; /* Position it at the bottom */
     left: 0;
     z-index: 1;
+    height: 50vh; /* Fixed height of 50% of the viewport height */
+    background-image: url("game\ images/castle.png");
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: contain;
+    margin-bottom: 40px;
 }
+
 
 
 
