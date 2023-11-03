@@ -4,9 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const gameMenu = document.getElementById('game')
     gameMenu.classList.add('hide')
+    bodyEl.classList.remove("black-background")
+
 })
 
 let START_BTN = document.getElementById('start-btn')
+const bodyEl = document.getElementById("body")
 
 START_BTN.addEventListener('click', function() {
     const mainMenu = document.getElementById('main-menu')
@@ -17,7 +20,11 @@ START_BTN.addEventListener('click', function() {
 
     // Set the body background image to the image in the .game container
     document.body.style.backgroundImage = `url('${gameMenu.querySelector('.background-image').src}')`;
+    bodyEl.classList.add("black-background")
 })
+
+/* This is where the orcs will be loaded on the orc path, they need to run so go through and use timeout */
+
 
 /*
 

@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+.black-background {
+    background-color: black;
+}
+
 .game {
     position: relative;
     width: 100vw;
@@ -29,7 +33,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: contain;
-    margin-bottom: 40px;
+    margin-bottom: 200px;
 }
 
 
@@ -80,4 +84,16 @@ body {
     color: yellow;
     border-radius: 17px;
     width: 200px;
+}
+
+/* ORCS */
+
+.orc-path canvas {
+    background-color: red;
+    width: 68vw;
+    height: 30vh;
+    z-index: 1;
+    margin-left: 30vw;
+    margin-top: 35vh;
+    opacity: 50%;
 }
