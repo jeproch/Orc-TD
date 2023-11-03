@@ -97,3 +97,17 @@ body {
     margin-top: 35vh;
     opacity: 50%;
 }
+
+.orc canvas {
+    background-color: purple;
+    width: 30vw;
+    height: 20vh;
+    z-index: 2;
+    opacity: 40%;
+    margin-left: 69vw;
+    margin-bottom: 50px;    
+}
+
+.orc-canvas {
+    margin-bottom: 40vh;
+}

@@ -1,3 +1,7 @@
+let orcEl = document.getElementById("orc")
+let START_BTN = document.getElementById('start-btn')
+const bodyEl = document.getElementById("body")
+
 document.addEventListener('DOMContentLoaded', function() {
     const mainMenu = document.getElementById('main-menu')
     mainMenu.classList.remove('hide')
@@ -8,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-let START_BTN = document.getElementById('start-btn')
-const bodyEl = document.getElementById("body")
 
 START_BTN.addEventListener('click', function() {
     const mainMenu = document.getElementById('main-menu')
