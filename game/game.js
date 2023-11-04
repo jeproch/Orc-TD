@@ -1,4 +1,3 @@
-let orcEl = document.getElementById("orc")
 let START_BTN = document.getElementById('start-btn')
 const bodyEl = document.getElementById("body")
 

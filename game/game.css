@@ -88,26 +88,33 @@ body {
 
 /* ORCS */
 
+.orc-path {
+    position: relative;
+}
+
 .orc-path canvas {
     background-color: red;
     width: 68vw;
     height: 30vh;
     z-index: 1;
-    margin-left: 30vw;
-    margin-top: 35vh;
+    position: absolute;
+    top: 35vh;
+    left: 30vw;
     opacity: 50%;
+}
+
+.orc {
+    position: relative;
+    z-index: 2;
 }
 
 .orc canvas {
     background-color: purple;
-    width: 30vw;
+    width: 15vw;
     height: 20vh;
-    z-index: 2;
     opacity: 40%;
-    margin-left: 69vw;
-    margin-bottom: 50px;    
+    position: absolute;
+    top: 40vh; /* Adjust this value to position the orc canvas vertically */
+    left: 85vw;
 }
 
-.orc-canvas {
-    margin-bottom: 40vh;
-}
