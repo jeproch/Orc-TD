@@ -17,11 +17,18 @@ orcPath.style.left = '30vw'
 let currentIndex = 0;
 
 function changeImageOrc() {
-    orcCanvas.style.backgroundImage = `url(${images[currentIndex]})`
+    //orcCanvas.style.backgroundImage = `url(${images[currentIndex]})`
     currentIndex = currentIndex + 1
-    if (currentIndex >= 1) {
+    if (currentIndex > 1) {
      currentIndex = 0;
     }
+
+    if (currentIndex === 0) {
+        orcCanvas.style.backgroundImage =  `url("../game/game images/Orcs/Orc 1 - Act.png")`
+    } else if (currentIndex === 1) {
+        orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Unact.png")`
+    }
+    console.log(currentIndex)
 }
 
 Move_ORC_BTN.addEventListener('click', function() {
@@ -29,7 +36,7 @@ Move_ORC_BTN.addEventListener('click', function() {
    let CurrentPath = parseInt(orcPath.style.left)
 
    // Adjust the left value, for example, increase it by 10vw
-   currentLeft -= 0.25;
+   currentLeft -= 0.05;
    
    // Set the updated left value
    orcCanvas.style.left = currentLeft + 'vw';
@@ -37,11 +44,8 @@ Move_ORC_BTN.addEventListener('click', function() {
    if (currentLeft <= CurrentPath) {
        alert('oor')
    }
+   changeImageOrc() 
 
    setInterval(changeImageOrc, 500);
    console.log(currentIndex)
 })
-
-export function main() {
-    console.log('')
-}

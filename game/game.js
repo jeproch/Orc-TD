@@ -23,7 +23,6 @@ START_BTN.addEventListener('click', function() {
     // Set the body background image to the image in the .game container
     document.body.style.backgroundImage = `url('${gameMenu.querySelector('.background-image').src}')`;
     bodyEl.classList.add("black-background")
-    
 })
 
 
