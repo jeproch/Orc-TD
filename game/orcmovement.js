@@ -55,5 +55,5 @@ Move_ORC_BTN.addEventListener('click', function() {
  
     setInterval(changeImageOrc, 500);
     console.log(currentIndex)
- })
+})
  

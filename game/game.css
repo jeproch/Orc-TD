@@ -2,6 +2,7 @@ body {
     background-color: rgb(255, 255, 0);
     z-index: -2;
     margin: 0;
+    overflow: hidden;
 }
 
 .black-background {
@@ -44,8 +45,10 @@ body {
 
 .heading-image {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    margin-top: 50px;
 }
 
 .heading-image img {
@@ -60,7 +63,7 @@ body {
     flex-direction: column; /* Stack buttons vertically */
     justify-content: center; /* Center vertically */
     align-items: center; /* Center horizontally */
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .buttons button {
@@ -116,5 +119,50 @@ body {
     z-index: 2;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    color: white;
+}
+
+/* Treat menu as different page*/
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Added this line */
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color: yellow;
+    position: relative;
+}
+
+.menu Button {
+    display: block;
+    background-color: yellow;
+    border-color: black;
+    border-radius: 3%;
+    width: 20vw;
+    height: 13vh;
+    margin-bottom: 30px;
+    font-size: 50px;
+    margin-left: auto; /* Added this line */
+    margin-right: auto; /* Added this line */
+}
+
+.menu button:hover {
+    background-color: rgb(196, 196, 55);
+    transition: 0.1s ease-in-out;
+    border-radius: 15%;
+}
+
+.menu-buttons button{
+    margin-top: 40px;
 }
 
