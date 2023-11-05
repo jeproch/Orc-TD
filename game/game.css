@@ -36,9 +36,6 @@ body {
     margin-bottom: 200px;
 }
 
-
-
-
 .hide {
     opacity: 0;
     display: none;
@@ -104,17 +101,20 @@ body {
 }
 
 .orc {
-    position: relative;
-    z-index: 2;
-}
-
-.orc canvas {
-    background-color: purple;
-    width: 15vw;
-    height: 20vh;
-    opacity: 40%;
-    position: absolute;
+    width: 7vw;
+    height: 15vh;
+    position: absolute; /* Set the element to absolute position */
     top: 40vh; /* Adjust this value to position the orc canvas vertically */
     left: 85vw;
+    z-index: 2;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.move-orc image {
+    position: relative;
+    z-index: 2;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
