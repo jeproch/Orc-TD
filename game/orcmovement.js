@@ -27,9 +27,11 @@ function changeImageOrc() {
     console.log(currentIndex)
 }
 
-Move_ORC_BTN.addEventListener('click', function() {
-   let currentLeft = parseInt(orcCanvas.style.left);
-   let CurrentPath = parseInt(orcPath.style.left)
+let moveInterval;
+
+function moveOrc() {
+    let currentLeft = parseInt(orcCanvas.style.left);
+    let CurrentPath = parseInt(orcPath.style.left)
 
    // Adjust the left value, for example, increase it by 10vw
    currentLeft -= 0.05;
@@ -38,10 +40,20 @@ Move_ORC_BTN.addEventListener('click', function() {
    orcCanvas.style.left = currentLeft + 'vw';
 
    if (currentLeft <= CurrentPath) {
-       alert('oor')
+       clearInterval(moveInterval)
    }
-   changeImageOrc() 
+}
 
-   setInterval(changeImageOrc, 500);
-   console.log(currentIndex)
-})
+Move_ORC_BTN.addEventListener('click', function() {
+   
+    changeImageOrc() 
+    moveOrc()
+ 
+    moveInterval = setInterval(function() {
+       moveOrc()
+    }, 500) //moveOrc, 500
+ 
+    setInterval(changeImageOrc, 500);
+    console.log(currentIndex)
+ })
+ 
