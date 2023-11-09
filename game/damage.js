@@ -2,6 +2,7 @@ let towerHealth = 100; // For starting out, upgrades will increase this health
 let orcHealth = 30;
 let orcAlive = true;
 let waveCounter = 1;
+let waveComplete = false;
 
 let towerLevel = 1;
 let orcDamage = 10;
@@ -27,6 +28,7 @@ function dps() { //per second
             console.log('dead');
             clearInterval(damageInterval);
             //console.log(towerHealth)
+            alert('wave ' + waveCounter +  ' lost')
         }
 
         
@@ -45,9 +47,15 @@ function dps() { //per second
         }  
         
         if (orcAlive === false) {
-            alert('wave 1 completed')
+            alert('wave ' + waveCounter +  'completed')
+            waveComplete = true
         }
     }
+}
+
+function increaseWave(){
+    waveCounter += 1;
+    waveComplete = false;
 }
 
 damageInterval = setInterval(function() {
@@ -60,3 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.dps = dps;
 window.towerHealth = towerHealth;
+window.orcHealth = orcHealth;

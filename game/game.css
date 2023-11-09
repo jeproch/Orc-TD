@@ -33,7 +33,7 @@ body {
     left: 0;
     z-index: 1;
     height: 50vh; /* Fixed height of 50% of the viewport height */
-    background-image: url("game\ images/castle.png");
+    /*background-image: url("game images/Castle unactive.png"); */
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: contain;
