@@ -25,20 +25,24 @@
     <div class="game" id="game">
         <!-- Background Image -->
         <div class="background-image"></div>
-
         <ion-icon name="menu-outline" class="menu-btn" id="menu-btn"></ion-icon>
     
         <!-- Tower Placeholder -->
         <div class="tower"></div>
-        
+    
         <div class="orc-path">
             <canvas class="orc-path-canvas"></canvas>
         </div>
+    
         <div class="orc" id="orc">
+            <div class="health-bar" id="health-bar"></div>
         </div>
-
-        <div class="move-orc"><button id="move-orc-btn">Move</button></div>
+    
+        <div class="move-orc">
+            <button id="move-orc-btn">Move</button>
+        </div>
     </div>
+    
 
     <div class="menu" id="menu">
         <div class="menu-buttons">
@@ -46,12 +50,13 @@
             <Button>Discord</Button>
             <Button id="menu-back-btn">Back</Button>
         </div>
-                    
     </div>
     
     
     <script src="game.js" type="module"></script>
+    <script src="damage.js" type="module"></script>
     <script src="orcmovement.js" type="module"></script>
+    
 
     <!--For icons-->
 

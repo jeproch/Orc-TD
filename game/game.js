@@ -4,6 +4,8 @@ const MENU_BTN = document.getElementById('menu-btn')
 const gameMenu = document.getElementById('game')
 const menuMenu = document.getElementById('menu')
 const MENU_BACK_BTN = document.getElementById('menu-back-btn')
+const startedGame = document.getElementById('started')
+const notStarted = document.getElementById('not-started')
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainMenu = document.getElementById('main-menu')
@@ -23,10 +25,12 @@ START_BTN.addEventListener('click', function() {
 
     const gameMenu = document.getElementById('game')
     gameMenu.classList.remove('hide')
+    
+    menuMenu.classList.add('hide')
+    menuMenu.style.display = "none"
 
     // Set the body background image to the image in the .game container
     document.body.style.backgroundImage = `url('${gameMenu.querySelector('.background-image').src}')`;
-    bodyEl.classList.add("black-background")
 })
 
 MENU_BTN.addEventListener('click', function() {

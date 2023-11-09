@@ -5,8 +5,13 @@ body {
     overflow: hidden;
 }
 
+.smooth-transition {
+    transition: 0.3s ease-in-out;
+}
+
 .black-background {
     background-color: black;
+    z-index: -1;
 }
 
 .game {
@@ -16,12 +21,10 @@ body {
     background-image: url("game images/battleground.png");
     background-repeat: no-repeat;
     background-position: center center; 
-    background-size: contain;
+    /*    background-size: contain; */
     border: none; 
     margin: 0;
 }
-
-
 
 .tower {
     width: 20vw;
@@ -93,26 +96,31 @@ body {
 }
 
 .orc-path canvas {
-    background-color: red;
-    width: 67vw;
+    width: 73vw;
     height: 30vh;
     z-index: 1;
     position: absolute;
     top: 35vh;
-    left: 30vw;
-    opacity: 50%;
 }
 
 .orc {
     width: 7vw;
     height: 15vh;
-    position: absolute; /* Set the element to absolute position */
+    position: relative; /* Set the element to absolute position */
     top: 40vh; /* Adjust this value to position the orc canvas vertically */
     left: 85vw;
     z-index: 2;
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.health-bar {
+    position: absolute;
+    top: -12px;
+    width: 100%; /* Full width of the orc element */
+    height: 10px; /* Adjust the height as needed */
+    background-color: green; /* Initial health bar color */
+  }
 
 .move-orc image {
     position: relative;
@@ -126,7 +134,15 @@ body {
     top: 0;
     right: 0;
     z-index: 4;
-    color: white;
+    color: black;
+    margin-right: 2vw;
+    margin-top: 1.5vh;
+    font-size: 50px;
+}
+
+.menu-btn:hover {
+    transition: 0.1s ease-in-out;
+    font-size: 55px;
 }
 
 /* Treat menu as different page*/
