@@ -6,6 +6,7 @@ const menuMenu = document.getElementById('menu')
 const MENU_BACK_BTN = document.getElementById('menu-back-btn')
 const startedGame = document.getElementById('started')
 const notStarted = document.getElementById('not-started')
+const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainMenu = document.getElementById('main-menu')
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     bodyEl.classList.remove("black-background")
 
     menuMenu.classList.add('hide')
-
+    NEXT_WAVE_BTN.classList.add('hide')
 })
 
 

@@ -1,3 +1,8 @@
+/*References */
+
+const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
+
+/* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
 let orcHealth = 30;
 let orcAlive = true;
@@ -50,8 +55,24 @@ function dps() { //per second
             alert('wave ' + waveCounter +  'completed')
             waveComplete = true
         }
+
+        if (waveComplete === true) {
+            /* next wave button*/
+            NEXT_WAVE_BTN.classList.remove('hide')
+        }
     }
 }
+
+NEXT_WAVE_BTN.addEventListener('click', function() {
+    function createOrc() {
+        const orcContainer = document.getElementById('game'); // Assuming this is the container for orcs
+        const newOrc = document.createElement('div');
+        newOrc.className = 'orc';
+        // Set other properties for the new orc, e.g., background image, starting position, etc.
+        orcContainer.appendChild(newOrc);
+        newOrc.classList.add('orc')
+    }
+})
 
 function increaseWave(){
     waveCounter += 1;
