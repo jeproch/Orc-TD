@@ -7,6 +7,7 @@ const MENU_BACK_BTN = document.getElementById('menu-back-btn')
 const startedGame = document.getElementById('started')
 const notStarted = document.getElementById('not-started')
 const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
+const SOCIALS_BTN = document.getElementById('socials-btn')
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainMenu = document.getElementById('main-menu')
@@ -17,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuMenu.classList.add('hide')
     NEXT_WAVE_BTN.classList.add('hide')
+
+    alert('Press F11 for Full Screen for the best experience')
 })
 
 
@@ -44,4 +47,6 @@ MENU_BACK_BTN.addEventListener('click', function() {
     menuMenu.classList.add('hide')
 })
 
-
+SOCIALS_BTN.addEventListener('click', function() {
+    window.location.href = "/game/socials/socials.html"
+})
