@@ -19,7 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
     menuMenu.classList.add('hide')
     NEXT_WAVE_BTN.classList.add('hide')
 
-    alert('Press F11 for Full Screen for the best experience')
+    // Check if the alert has been shown before
+    if (!localStorage.getItem('alertShown')) {
+    // Show the alert
+    alert('Press F11 for Full Screen for the best experience');
+  
+    // Set a flag in localStorage to indicate that the alert has been shown
+    localStorage.setItem('alertShown', 'true');
+    }
+  
 })
 
 

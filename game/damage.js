@@ -83,10 +83,6 @@ damageInterval = setInterval(function() {
     dps();
 }, 1000);
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log(dps)
-})
-
 window.dps = dps;
 window.towerHealth = towerHealth;
 window.orcHealth = orcHealth;
