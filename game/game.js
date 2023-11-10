@@ -4,9 +4,9 @@ const MENU_BTN = document.getElementById('menu-btn')
 const gameMenu = document.getElementById('game')
 const menuMenu = document.getElementById('menu')
 const MENU_BACK_BTN = document.getElementById('menu-back-btn')
+const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
 const startedGame = document.getElementById('started')
 const notStarted = document.getElementById('not-started')
-const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
 const SOCIALS_BTN = document.getElementById('socials-btn')
 
 document.addEventListener('DOMContentLoaded', function() {

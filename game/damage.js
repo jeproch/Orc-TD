@@ -1,6 +1,6 @@
 /*References */
 
-const NEXT_WAVE_BTN =  document.getElementById('next-wave-btn')
+const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 
 /* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
@@ -8,81 +8,110 @@ let orcHealth = 30;
 let orcAlive = true;
 let waveCounter = 1;
 let waveComplete = false;
+let orcDeaths = 0;
 
 let towerLevel = 1;
 let orcDamage = 10;
 let towerDamage = 20;
 let damageInterval;
-let orcCanvas = document.querySelector('.orc');
-let orcPath = document.querySelector('.orc-path canvas');
+let orcCanvas = document.querySelector(".orc");
+let orcPath = document.querySelector(".orc-path canvas");
+let newHealthBar;
 
-function dps() { //per second
-    if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
-        // The orc has reached the tower, so it can do damage.
-        towerHealth = towerHealth - orcDamage;
-        orcHealth = orcHealth - towerDamage;
+function dps() {
+  //per second
+  if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
+    // The orc has reached the tower, so it can do damage.
+    towerHealth = towerHealth - orcDamage;
+    orcHealth = orcHealth - towerDamage;
 
-        // Update the health bar width
-        const healthBar = document.getElementById("health-bar");
-        healthBar.style.width = orcHealth + "%";
+    // Update the health bar width
+    const healthBar = document.getElementById("health-bar");
 
-        console.log(towerHealth)
-        console.log(orcHealth)
-
-        if (towerHealth <= 0) {
-            console.log('dead');
-            clearInterval(damageInterval);
-            //console.log(towerHealth)
-            alert('wave ' + waveCounter +  ' lost')
-        }
-
-        
-        if (orcHealth <= 0 ) {
-            console.log('orc dead')
-            clearInterval(damageInterval)
-            orcAlive = false;
-            console.log('remove picture')
-
-            /* remove picture for orc */ 
-            let elementToRemoveOrc = document.getElementById('orc')
-            if (elementToRemoveOrc) {
-                const parentElementGame = document.getElementById('game')
-                parentElementGame.removeChild(elementToRemoveOrc)
-            }
-        }  
-        
-        if (orcAlive === false) {
-            alert('wave ' + waveCounter +  'completed')
-            waveComplete = true
-        }
-
-        if (waveComplete === true) {
-            /* next wave button*/
-            NEXT_WAVE_BTN.classList.remove('hide')
-        }
+    if (healthBar) {
+      healthBar.style.width = orcHealth + "%";
     }
+
+    console.log(towerHealth);
+    console.log(orcHealth);
+
+    if (towerHealth <= 0) {
+      clearInterval(damageInterval);
+      //console.log(towerHealth)
+      alert("wave " + waveCounter + " lost");
+    }
+
+    if (orcHealth <= 0) {
+      clearInterval(damageInterval);
+      orcAlive = false;
+
+      /* remove picture for orc */
+      let elementToRemoveOrc = document.getElementById("orc");
+      if (elementToRemoveOrc) {
+        const parentElementGame = document.getElementById("game");
+        parentElementGame.removeChild(elementToRemoveOrc);
+      }
+    }
+
+    if (orcAlive === false) {
+      alert("wave " + waveCounter + "completed");
+      waveComplete = true;
+    }
+
+    if (waveComplete === true) {
+      /* next wave button*/
+      NEXT_WAVE_BTN.classList.remove("hide");
+      orcDeaths = orcDeaths + 1;
+      console.log("Orc Deaths" + orcDeaths);
+    }
+  }
 }
 
-NEXT_WAVE_BTN.addEventListener('click', function() {
-    function createOrc() {
-        const orcContainer = document.getElementById('game'); // Assuming this is the container for orcs
-        const newOrc = document.createElement('div');
-        newOrc.className = 'orc';
-        // Set other properties for the new orc, e.g., background image, starting position, etc.
-        orcContainer.appendChild(newOrc);
-        newOrc.classList.add('orc')
-    }
-})
+NEXT_WAVE_BTN.addEventListener("click", function () {
+  function createOrc() {
+    const orcContainer = document.getElementById("game");
 
-function increaseWave(){
-    waveCounter += 1;
-    waveComplete = false;
+    // Remove existing orc element
+    const existingOrc = document.getElementById("orc");
+    if (existingOrc) {
+      orcContainer.removeChild(existingOrc);
+    }
+
+    const newOrc = document.createElement("div");
+    newOrc.id = "orc";
+    newOrc.className = "orc";
+    newOrc.style.left = "85vw";
+    newOrc.style.backgroundImage =
+      'url("../game/game images/Orcs/Orc 1 - Unact.png")';
+
+    const newHealthBar = document.createElement("div");
+    newHealthBar.className = "health-bar";
+    newHealthBar.style.width = orcHealth + "%";
+    newHealthBar.style.backgroundColor = "green";
+
+    newOrc.appendChild(newHealthBar);
+
+    orcContainer.appendChild(newOrc);
+  }
+
+  // Call the createOrc function
+  createOrc();
+});
+
+function increaseWave() {
+  waveCounter += 1;
+  waveComplete = false;
 }
 
-damageInterval = setInterval(function() {
-    dps();
+damageInterval = setInterval(function () {
+  dps();
 }, 1000);
 
 window.dps = dps;
 window.towerHealth = towerHealth;
 window.orcHealth = orcHealth;
+
+/* Take default values and make them larger in external file */
+window.orcDamage = orcDamage;
+window.towerDamage = towerDamage;
+window.newHealthBar = newHealthBar;
