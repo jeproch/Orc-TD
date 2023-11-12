@@ -59,6 +59,8 @@ let moveOrc = function () {
     clearInterval(moveInterval);
 
     isAtEnd = true;
+  } else {
+    console.log("debug statement");
   }
 };
 
@@ -82,9 +84,9 @@ const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 
 NEXT_WAVE_BTN.addEventListener("click", function () {
   // Your existing code for the next wave button click
-  changeImageOrc();
-  moveOrc();
-  changeImageTower();
+  //changeImageOrc();
+  //moveOrc();
+  //changeImageTower();
 
   moveInterval = setInterval(function () {
     moveOrc();
