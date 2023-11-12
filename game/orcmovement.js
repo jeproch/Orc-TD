@@ -79,20 +79,3 @@ Move_ORC_BTN.addEventListener("click", function () {
 });
 
 window.isAtEnd = isAtEnd;
-
-const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
-
-NEXT_WAVE_BTN.addEventListener("click", function () {
-  // Your existing code for the next wave button click
-  //changeImageOrc();
-  //moveOrc();
-  //changeImageTower();
-
-  moveInterval = setInterval(function () {
-    moveOrc();
-    dps();
-    if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
-      changeImageTower();
-    }
-  }, 500);
-});

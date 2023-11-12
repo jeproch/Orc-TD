@@ -1,7 +1,5 @@
 /*References */
 
-const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
-
 /* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
 let orcHealth = 30;
@@ -60,43 +58,11 @@ function dps() {
 
     if (waveComplete === true) {
       /* next wave button*/
-      NEXT_WAVE_BTN.classList.remove("hide");
       orcDeaths = orcDeaths + 1;
       console.log("Orc Deaths" + orcDeaths);
     }
   }
 }
-
-NEXT_WAVE_BTN.addEventListener("click", function () {
-  function createOrc() {
-    const orcContainer = document.getElementById("game");
-
-    // Remove existing orc element
-    const existingOrc = document.getElementById("orc");
-    if (existingOrc) {
-      orcContainer.removeChild(existingOrc);
-    }
-
-    const newOrc = document.createElement("div");
-    newOrc.id = "orc";
-    newOrc.className = "orc";
-    newOrc.style.left = "85vw";
-    newOrc.style.backgroundImage =
-      'url("../game/game images/Orcs/Orc 1 - Unact.png")';
-
-    const newHealthBar = document.createElement("div");
-    newHealthBar.className = "health-bar";
-    newHealthBar.style.width = orcHealth + "%";
-    newHealthBar.style.backgroundColor = "green";
-
-    newOrc.appendChild(newHealthBar);
-
-    orcContainer.appendChild(newOrc);
-  }
-
-  // Call the createOrc function
-  createOrc();
-});
 
 function increaseWave() {
   waveCounter += 1;
