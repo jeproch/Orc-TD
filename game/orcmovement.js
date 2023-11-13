@@ -1,10 +1,17 @@
-let orcCanvas = document.querySelector(".orc"); // If you want to use the class
-let Move_ORC_BTN = document.getElementById("move-orc-btn");
-let orcPath = document.querySelector(".orc-path canvas");
+let orcCanvas;
+let Move_ORC_BTN;
+let orcPath;
 let isAtEnd = false;
-let towerCanvas = document.querySelector(".tower");
+let towerCanvas;
+let moveOrc; // Declare moveOrc in the global scope
+let moveInterval; // Declare moveInterval in the global scope
 
 document.addEventListener("DOMContentLoaded", function () {
+  orcCanvas = document.querySelector(".orc");
+  Move_ORC_BTN = document.getElementById("move-orc-btn");
+  orcPath = document.querySelector(".orc-path canvas");
+  towerCanvas = document.querySelector(".tower");
+
   // Start with unactive images for orc and tower
   orcCanvas.style.backgroundImage =
     'url("../game/game images/Orcs/Orc 1 - Unact.png")';
@@ -43,9 +50,7 @@ function changeImageTower() {
   towerCanvas.classList.add("smooth-transition");
 }
 
-let moveInterval;
-
-let moveOrc = function () {
+moveOrc = function () {
   let currentLeft = parseInt(orcCanvas.style.left);
   let CurrentPath = parseInt(orcPath.style.left);
 
@@ -59,8 +64,6 @@ let moveOrc = function () {
     clearInterval(moveInterval);
 
     isAtEnd = true;
-  } else {
-    console.log("debug statement");
   }
 };
 
