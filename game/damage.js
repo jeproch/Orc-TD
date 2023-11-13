@@ -1,4 +1,4 @@
-/*References */
+let numberOfOrcsInWave = 1; // You can adjust this number as needed
 
 /* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
@@ -16,9 +16,17 @@ let orcCanvas = document.querySelector(".orc");
 let orcPath = document.querySelector(".orc-path canvas");
 let newHealthBar;
 
+function increaseWave() {
+  waveCounter += 1;
+  waveComplete = false;
+}
+
 function dps() {
   //per second
-  if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
+  if (
+    orcCanvas &&
+    parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)
+  ) {
     // The orc has reached the tower, so it can do damage.
     towerHealth = towerHealth - orcDamage;
     orcHealth = orcHealth - towerDamage;
@@ -52,21 +60,20 @@ function dps() {
     }
 
     if (orcAlive === false) {
-      alert("wave " + waveCounter + "completed");
+      alert("wave " + waveCounter + " completed");
       waveComplete = true;
     }
 
     if (waveComplete === true) {
-      /* next wave button*/
+      /* create new orcs for the next wave */
+      for (let i = 0; i < numberOfOrcsInWave; i++) {
+        createOrc();
+      }
+
       orcDeaths = orcDeaths + 1;
-      console.log("Orc Deaths" + orcDeaths);
+      console.log("Orc Deaths: " + orcDeaths);
     }
   }
-}
-
-function increaseWave() {
-  waveCounter += 1;
-  waveComplete = false;
 }
 
 damageInterval = setInterval(function () {
@@ -81,3 +88,24 @@ window.orcHealth = orcHealth;
 window.orcDamage = orcDamage;
 window.towerDamage = towerDamage;
 window.newHealthBar = newHealthBar;
+
+// Function to create an orc element
+function createOrc() {
+  const orcContainer = document.getElementById("game");
+  const newOrc = document.createElement("div");
+  newOrc.className = "orc";
+  newOrc.style.left = "85vw";
+  newOrc.style.backgroundImage =
+    'url("../game/game images/Orcs/Orc 1 - Unact.png")';
+
+  const newHealthBar = document.createElement("div");
+  newHealthBar.className = "health-bar";
+  newHealthBar.style.width = orcHealth + "%";
+  newHealthBar.style.backgroundColor = "green";
+
+  newOrc.appendChild(newHealthBar);
+  orcContainer.appendChild(newOrc);
+
+  // Move the new orc element
+  moveOrc(newOrc);
+}
