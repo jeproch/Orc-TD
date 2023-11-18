@@ -21,7 +21,6 @@ body {
   background-image: url("game images/battleground.png");
   background-repeat: no-repeat;
   background-position: center center;
-  /*    background-size: contain; */
   border: none;
   margin: 0;
 }
