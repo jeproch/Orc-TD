@@ -1,0 +1,74 @@
+let orcCanvas = document.querySelector(".orc");
+let Move_ORC_BTN = document.getElementById("move-orc-btn");
+let orcPath = document.querySelector(".orc-path canvas");
+let isAtEnd = false;
+let towerCanvas = document.querySelector(".tower");
+let moveInterval; // Declare moveInterval in the global scope
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Start with inactive images for orc and tower
+  orcCanvas.style.backgroundImage =
+    'url("../game/game images/Orcs/Orc 1 - Unact.png")';
+  towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
+});
+
+let currentIndexOrc = 0;
+let currentIndexTower = 0;
+
+function changeImageOrc() {
+  if (currentIndexOrc === 0) {
+    orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Act.png")`;
+    currentIndexOrc = currentIndexOrc + 1;
+  } else if (currentIndexOrc === 1) {
+    orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Unact.png")`;
+    currentIndexOrc = currentIndexOrc - 1;
+  }
+
+  console.log(currentIndexOrc);
+
+  orcCanvas.classList.add("smooth-transition");
+
+  /* Also take care of the orc moving here */
+
+  function moveOrc() {
+    let currentLeft = parseInt(orcCanvas.style.left);
+
+    let CurrentPath = parseInt(orcPath.style.left);
+
+    currentLeft = currentLeft - 0.5;
+    orcCanvas.style.left = currentLeft + "vw";
+    if (currentLeft <= CurrentPath) {
+      clearInterval(moveInterval);
+      isAtEnd = true;
+    }
+  }
+
+  moveOrc();
+}
+
+function changeImageTower() {
+  if (currentIndexTower === 0) {
+    towerCanvas.style.backgroundImage = `url("game images/Castle unactive.png")`;
+    currentIndexTower += 1;
+  } else if (currentIndexTower === 1) {
+    towerCanvas.style.backgroundImage = `url("game images/Castle active.png")`;
+    currentIndexTower -= 1;
+  }
+
+  console.log(currentIndexTower);
+  towerCanvas.classList.add("smooth-transition");
+}
+
+Move_ORC_BTN.addEventListener("click", function () {
+  changeImageTower();
+
+  moveInterval = setInterval(function () {
+    dps();
+    changeImageOrc();
+    if (isAtEnd) {
+      clearInterval(moveInterval); // Clear the interval when it reaches the end
+      changeImageTower();
+    }
+  }, 1000); // Set the interval to 1000 milliseconds (1 second)
+});
+window.isAtEnd = isAtEnd;

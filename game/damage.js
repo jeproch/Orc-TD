@@ -38,9 +38,6 @@ function dps() {
       healthBar.style.width = orcHealth + "%";
     }
 
-    console.log(towerHealth);
-    console.log(orcHealth);
-
     if (towerHealth <= 0) {
       clearInterval(damageInterval);
       //console.log(towerHealth)
@@ -71,14 +68,21 @@ function dps() {
       }
 
       orcDeaths = orcDeaths + 1;
-      console.log("Orc Deaths: " + orcDeaths);
     }
   }
 }
 
-damageInterval = setInterval(function () {
+if (
+  orcCanvas &&
+  parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)
+) {
   dps();
-}, 1000);
+  damageInterval = setInterval(function () {
+    dps();
+  }, 1000);
+}
+
+//if orc reaches tower, then start dps
 
 window.dps = dps;
 window.towerHealth = towerHealth;

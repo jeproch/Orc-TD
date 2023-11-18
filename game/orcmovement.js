@@ -1,84 +1,59 @@
-let orcCanvas;
-let Move_ORC_BTN;
-let orcPath;
+let orcCanvas = document.querySelector(".orc");
+let Move_ORC_BTN = document.getElementById("move-orc-btn");
+let orcPath = document.querySelector(".orc-path canvas");
 let isAtEnd = false;
-let towerCanvas;
-let moveOrc; // Declare moveOrc in the global scope
+let towerCanvas = document.querySelector(".tower");
 let moveInterval; // Declare moveInterval in the global scope
+let currentLeft = parseFloat(orcCanvas.style.left); // Use parseFloat to handle "vw" units
+let currentPath = parseFloat(orcPath.style.left);
 
 document.addEventListener("DOMContentLoaded", function () {
-  orcCanvas = document.querySelector(".orc");
-  Move_ORC_BTN = document.getElementById("move-orc-btn");
-  orcPath = document.querySelector(".orc-path canvas");
-  towerCanvas = document.querySelector(".tower");
-
-  // Start with unactive images for orc and tower
+  // Start with inactive images for orc and tower
   orcCanvas.style.backgroundImage =
     'url("../game/game images/Orcs/Orc 1 - Unact.png")';
   towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
-
-  console.log("Tower canvas: " + towerCanvas);
 });
 
-orcCanvas.style.left = "85vw";
-orcPath.style.left = "20vw";
-
 let currentIndexOrc = 0;
-let currentIndexTower = 0;
 
 function changeImageOrc() {
-  currentIndexOrc = 1 - currentIndexOrc; // Toggle between 0 and 1
-
   if (currentIndexOrc === 0) {
     orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Act.png")`;
+    currentIndexOrc = 1;
   } else {
     orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Unact.png")`;
+    currentIndexOrc = 0;
   }
 
   orcCanvas.classList.add("smooth-transition");
 }
 
-function changeImageTower() {
-  currentIndexTower = 1 - currentIndexTower; // Toggle between 0 and 1
+function moveOrc() {
+  // Adjust the left value, for example, decrease it by 0.5vw
+  currentLeft = currentLeft - 0.5;
 
-  if (currentIndexTower === 0) {
-    towerCanvas.style.backgroundImage = `url("game images/Castle unactive.png")`;
-  } else {
-    towerCanvas.style.backgroundImage = `url("game images/Castle active.png")`;
-  }
-
-  towerCanvas.classList.add("smooth-transition");
-}
-
-moveOrc = function () {
-  let currentLeft = parseInt(orcCanvas.style.left);
-  let CurrentPath = parseInt(orcPath.style.left);
-
-  // Adjust the left value, for example, increase it by 10vw
-  currentLeft -= 0.05;
-
-  // Set the updated left value
-  orcCanvas.style.left = currentLeft + "vw";
-
-  if (currentLeft <= CurrentPath) {
+  // Check if the orc has reached a certain point (e.g., when currentLeft <= currentPath)
+  if (currentLeft <= currentPath) {
     clearInterval(moveInterval);
-
     isAtEnd = true;
   }
-};
+
+  orcCanvas.style.left = `${currentLeft}vw`; // Apply the updated left value to the style
+}
 
 Move_ORC_BTN.addEventListener("click", function () {
-  changeImageOrc();
-  moveOrc();
-  changeImageTower();
+  // Reset variables
+  isAtEnd = false;
+  currentLeft = parseFloat(orcCanvas.style.left);
 
+  // Set the interval to move the orc every 500 milliseconds
   moveInterval = setInterval(function () {
+    changeImageOrc();
     moveOrc();
-    dps();
-    if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
-      changeImageTower();
+    console.log("move");
+    if (isAtEnd) {
+      clearInterval(moveInterval);
+      // Change the image or do other actions when the orc reaches the end
     }
   }, 500);
 });
-
-window.isAtEnd = isAtEnd;
