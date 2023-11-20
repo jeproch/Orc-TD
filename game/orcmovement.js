@@ -15,68 +15,50 @@ document.addEventListener("DOMContentLoaded", function () {
     'url("../game/game images/Orcs/Orc 1 - Unact.png")';
   towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
 
+  currentPath = 22;
+
   currentLeft = 85;
   orcCanvas.style.left = currentLeft + viewWidth;
+  orcPath.style.left = currentPath + viewWidth;
 });
 
 function moveOrc() {
   let moveInterval = setInterval(function () {
-    console.log("move orc");
-
     currentLeft -= 1;
+
+    console.log(currentLeft);
 
     orcCanvas.style.left = currentLeft + viewWidth;
 
-    console.log(orcCanvas.style.left);
+    if (currentLeft <= 22 /* 22 is the value of currentpath */) {
+      clearInterval(moveInterval);
+
+      isAtEnd = true;
+      console.log(isAtEnd);
+    }
   }, 500);
 }
 
-Move_ORC_BTN.addEventListener("click", function () {
-  moveOrc();
-});
-
-/*
-let currentIndexOrc = 0;
-
 function changeImageOrc() {
-  if (currentIndexOrc === 0) {
-    orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Act.png")`;
-    currentIndexOrc = 1;
-  } else {
-    orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Unact.png")`;
-    currentIndexOrc = 0;
-  }
+  let changeimageinterval = setInterval(function () {
+    if (currentIndexOrc === 0) {
+      orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Act.png")`;
+      currentIndexOrc = 1;
+    } else {
+      orcCanvas.style.backgroundImage = `url("../game/game images/Orcs/Orc 1 - Unact.png")`;
+      currentIndexOrc = 0;
+    }
+  }, 500);
 
   orcCanvas.classList.add("smooth-transition");
 }
 
-function moveOrc() {
-  // Adjust the left value, for example, decrease it by 0.5vw
-  currentLeft = currentLeft - 0.5 + "vw";
-  console.log(currentLeft);
-  // Check if the orc has reached a certain point (e.g., when currentLeft <= currentPath)
-  if (currentLeft <= currentPath) {
-    clearInterval(moveInterval);
-    isAtEnd = true;
-  }
-
-  orcCanvas.style.left = currentLeft + "vw"; // Apply the updated left value to the style
-}
-
 Move_ORC_BTN.addEventListener("click", function () {
-  // Reset variables
-  isAtEnd = false;
-  currentLeft = parseInt(orcCanvas.style.left);
+  moveOrc();
+  changeImageOrc();
 
-  // Set the interval to move the orc every 500 milliseconds
-  moveInterval = setInterval(function () {
-    changeImageOrc();
-    moveOrc();
-    console.log("move");
-    if (isAtEnd) {
-      clearInterval(moveInterval);
-      // Change the image or do other actions when the orc reaches the end
-    }
-  }, 500);
+  console.log(orcPath.style.left);
 });
-*/
+
+let currentIndexOrc = 0;
+window.isar = isAtEnd;
