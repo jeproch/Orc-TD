@@ -97,8 +97,11 @@ body {
 .orc-path canvas {
   width: 73vw;
   height: 30vh;
+  right: 50px;
   z-index: 1;
   position: absolute;
+  background-color: red;
+  opacity: 50%;
   top: 35vh;
 }
 

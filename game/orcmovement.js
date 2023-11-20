@@ -7,6 +7,7 @@ let moveInterval; // Declare moveInterval in the global scope
 
 let currentLeft;
 let currentPath;
+let viewWidth = "vw";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Start with inactive images for orc and tower
@@ -14,19 +15,27 @@ document.addEventListener("DOMContentLoaded", function () {
     'url("../game/game images/Orcs/Orc 1 - Unact.png")';
   towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
 
-  // Get computed style values inside the event listener
-  let orcCanvasStyle = window.getComputedStyle(orcCanvas);
-  let orcPathStyle = window.getComputedStyle(orcPath);
-
-  // Parse the left values
-  orcCanvas.style.left = 85 + "vw";
-  currentLeft = orcCanvas.style.left;
-  currentPath = parseFloat(orcPathStyle.left);
-
-  console.log(currentLeft);
-  console.log(currentPath);
+  currentLeft = 85;
+  orcCanvas.style.left = currentLeft + viewWidth;
 });
 
+function moveOrc() {
+  let moveInterval = setInterval(function () {
+    console.log("move orc");
+
+    currentLeft -= 1;
+
+    orcCanvas.style.left = currentLeft + viewWidth;
+
+    console.log(orcCanvas.style.left);
+  }, 500);
+}
+
+Move_ORC_BTN.addEventListener("click", function () {
+  moveOrc();
+});
+
+/*
 let currentIndexOrc = 0;
 
 function changeImageOrc() {
@@ -44,14 +53,14 @@ function changeImageOrc() {
 function moveOrc() {
   // Adjust the left value, for example, decrease it by 0.5vw
   currentLeft = currentLeft - 0.5 + "vw";
-
+  console.log(currentLeft);
   // Check if the orc has reached a certain point (e.g., when currentLeft <= currentPath)
   if (currentLeft <= currentPath) {
     clearInterval(moveInterval);
     isAtEnd = true;
   }
 
-  orcCanvas.style.left = `${currentLeft}vw`; // Apply the updated left value to the style
+  orcCanvas.style.left = currentLeft + "vw"; // Apply the updated left value to the style
 }
 
 Move_ORC_BTN.addEventListener("click", function () {
@@ -70,3 +79,4 @@ Move_ORC_BTN.addEventListener("click", function () {
     }
   }, 500);
 });
+*/
