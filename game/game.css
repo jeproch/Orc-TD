@@ -107,7 +107,7 @@ body {
   height: 15vh;
   position: relative; /* Set the element to absolute position */
   top: 40vh; /* Adjust this value to position the orc canvas vertically */
-  left: 85vw;
+  /* left is 85vw */
   z-index: 2;
   background-size: contain;
   background-repeat: no-repeat;

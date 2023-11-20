@@ -1,17 +1,30 @@
+let orcPath = document.querySelector(".orc-path canvas");
 let orcCanvas = document.querySelector(".orc");
 let Move_ORC_BTN = document.getElementById("move-orc-btn");
-let orcPath = document.querySelector(".orc-path canvas");
 let isAtEnd = false;
 let towerCanvas = document.querySelector(".tower");
 let moveInterval; // Declare moveInterval in the global scope
-let currentLeft = parseFloat(orcCanvas.style.left); // Use parseFloat to handle "vw" units
-let currentPath = parseFloat(orcPath.style.left);
+
+let currentLeft;
+let currentPath;
 
 document.addEventListener("DOMContentLoaded", function () {
   // Start with inactive images for orc and tower
   orcCanvas.style.backgroundImage =
     'url("../game/game images/Orcs/Orc 1 - Unact.png")';
   towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
+
+  // Get computed style values inside the event listener
+  let orcCanvasStyle = window.getComputedStyle(orcCanvas);
+  let orcPathStyle = window.getComputedStyle(orcPath);
+
+  // Parse the left values
+  orcCanvas.style.left = 85 + "vw";
+  currentLeft = orcCanvas.style.left;
+  currentPath = parseFloat(orcPathStyle.left);
+
+  console.log(currentLeft);
+  console.log(currentPath);
 });
 
 let currentIndexOrc = 0;
@@ -30,7 +43,7 @@ function changeImageOrc() {
 
 function moveOrc() {
   // Adjust the left value, for example, decrease it by 0.5vw
-  currentLeft = currentLeft - 0.5;
+  currentLeft = currentLeft - 0.5 + "vw";
 
   // Check if the orc has reached a certain point (e.g., when currentLeft <= currentPath)
   if (currentLeft <= currentPath) {
@@ -44,7 +57,7 @@ function moveOrc() {
 Move_ORC_BTN.addEventListener("click", function () {
   // Reset variables
   isAtEnd = false;
-  currentLeft = parseFloat(orcCanvas.style.left);
+  currentLeft = parseInt(orcCanvas.style.left);
 
   // Set the interval to move the orc every 500 milliseconds
   moveInterval = setInterval(function () {
