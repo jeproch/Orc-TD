@@ -22,12 +22,6 @@ let checkdamageinterval;
 
 Move_ORC_BTN.addEventListener("click", function () {
   console.log("dps");
-
-  checkdamageinterval = setInterval(function () {
-    while (isAtEnd === true) {
-      console.log("isatend");
-    }
-  }, 500);
 });
 
 /*

@@ -7,7 +7,7 @@ const DISCORD_BUTTON = document.getElementById("discord-btn");
 const HOME_BUTTON = document.getElementById("home-button");
 
 YOUTUBE_BTN.addEventListener("mouseover", () => {
-  bodyEl.style.backgroundColor = "Red";
+  bodyEl.style.backgroundColor = "#FF474C";
   YOUTUBE_BTN.style.backgroundColor = "Red";
   DISCORD_BUTTON.style.backgroundColor = "Black";
   HOME_BUTTON.style.backgroundColor = "Black";
@@ -21,7 +21,7 @@ YOUTUBE_BTN.addEventListener("mouseout", () => {
 });
 
 DISCORD_BUTTON.addEventListener("mouseover", () => {
-  bodyEl.style.backgroundColor = "Blue";
+  bodyEl.style.backgroundColor = "#87CEEB";
   DISCORD_BUTTON.style.backgroundColor = "Lightblue";
   YOUTUBE_BTN.style.backgroundColor = "Black";
   HOME_BUTTON.style.backgroundColor = "Black";
