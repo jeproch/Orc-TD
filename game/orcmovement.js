@@ -61,4 +61,5 @@ Move_ORC_BTN.addEventListener("click", function () {
 });
 
 let currentIndexOrc = 0;
-window.isar = isAtEnd;
+
+window.isAtEnd = isAtEnd;
