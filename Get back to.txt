@@ -1,5 +1,0 @@
-so the orc's left is now declared in the javascript rather than the css,
-make sure that the path has a defined value as well as the orc el
-why does console give errors for the values
-make sure you can adjust values accordingly with move function
-go to line 22 to 24 for getting started again

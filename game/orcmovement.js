@@ -34,6 +34,9 @@ function moveOrc() {
       clearInterval(moveInterval);
 
       isAtEnd = true;
+      towerCanvas.style.backgroundImage =
+        'url("game images/Castle active.png")';
+
       console.log(isAtEnd);
     }
   }, 500);
