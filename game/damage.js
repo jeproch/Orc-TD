@@ -9,6 +9,7 @@ let orcHealth = 30;
 let orcAlive = true;
 let waveCounter = 1;
 let waveComplete = false;
+let resetOrc = false;
 let orcDeaths = 0;
 
 let isAtEnd = window.isAtEnd;
@@ -23,10 +24,12 @@ let orcPath = document.querySelector(".orc-path canvas");
 let checkdamageinterval;
 let atTowerInterval;
 let checkWaveint;
+let resetOrcInt;
 
 Move_ORC_BTN.addEventListener("click", function () {
   dps();
   checkWave();
+  resetOrc();
 });
 
 function dps() {
@@ -59,11 +62,21 @@ function dps() {
 
 function checkWave() {
   checkWaveint = setInterval(function () {
+    console.log(resetOrc);
+
     if (waveComplete === true) {
       console.log("wave complete");
-
+      resetOrc = true;
       waveComplete = false;
       clearInterval(checkWaveint);
+    }
+  }, 500);
+}
+
+function resetOrc() {
+  resetOrcInt = setInterval(function () {
+    if (resetOrc === true) {
+      console.log("reset orc");
     }
   }, 500);
 }

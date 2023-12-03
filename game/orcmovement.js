@@ -4,6 +4,7 @@ let Move_ORC_BTN = document.getElementById("move-orc-btn");
 let isAtEnd = false;
 let towerCanvas = document.querySelector(".tower");
 let moveInterval; // Declare moveInterval in the global scope
+let resetOrcInt;
 
 let currentLeft;
 let currentPath;
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function moveOrc() {
   let moveInterval = setInterval(function () {
-    currentLeft -= 1;
+    currentLeft -= 5; //change to 1
 
     console.log(currentLeft);
 
