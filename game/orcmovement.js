@@ -5,6 +5,7 @@ let isAtEnd = false;
 let towerCanvas = document.querySelector(".tower");
 let moveInterval; // Declare moveInterval in the global scope
 let resetOrcInt;
+let newInterval;
 
 let currentLeft;
 let currentPath;
@@ -22,6 +23,18 @@ document.addEventListener("DOMContentLoaded", function () {
   orcCanvas.style.left = currentLeft + viewWidth;
   orcPath.style.left = currentPath + viewWidth;
 });
+
+function checkAfterReset() {
+  newInterval = setInterval(function () {
+    console.log("check after reset");
+    if (window.startMovement === true) {
+      moveOrc();
+
+      currentLeft = 85;
+      clearInterval(newInterval);
+    }
+  }, 500);
+}
 
 function moveOrc() {
   let moveInterval = setInterval(function () {
@@ -60,6 +73,7 @@ function changeImageOrc() {
 Move_ORC_BTN.addEventListener("click", function () {
   moveOrc();
   changeImageOrc();
+  checkAfterReset();
 
   console.log(orcPath.style.left);
 });

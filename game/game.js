@@ -7,6 +7,7 @@ const MENU_BACK_BTN = document.getElementById("menu-back-btn");
 const startedGame = document.getElementById("started");
 const notStarted = document.getElementById("not-started");
 const SOCIALS_BTN = document.getElementById("socials-btn");
+const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 
 document.addEventListener("DOMContentLoaded", function () {
   const mainMenu = document.getElementById("main-menu");
@@ -24,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set a flag in localStorage to indicate that the alert has been shown
     localStorage.setItem("alertShown", "true");
   }
+
+  NEXT_WAVE_BTN.classList.add("hide");
 });
 
 START_BTN.addEventListener("click", function () {

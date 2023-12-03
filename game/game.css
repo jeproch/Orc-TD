@@ -5,6 +5,13 @@ body {
   overflow: hidden;
 }
 
+#next-wave-btn {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
 .smooth-transition {
   transition: 0.3s ease-in-out;
 }

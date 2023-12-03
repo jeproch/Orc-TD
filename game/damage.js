@@ -1,6 +1,8 @@
 /*References */
 
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
+const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
+
 const healthBar = document.getElementById("health-bar");
 
 /* Default values */
@@ -10,6 +12,7 @@ let orcAlive = true;
 let waveCounter = 1;
 let waveComplete = false;
 let resetOrc = false;
+let startMovement = false;
 let orcDeaths = 0;
 
 let isAtEnd = window.isAtEnd;
@@ -29,7 +32,7 @@ let resetOrcInt;
 Move_ORC_BTN.addEventListener("click", function () {
   dps();
   checkWave();
-  resetOrc();
+  resetOrcFunc();
 });
 
 function dps() {
@@ -73,10 +76,25 @@ function checkWave() {
   }, 500);
 }
 
-function resetOrc() {
+function resetOrcFunc() {
   resetOrcInt = setInterval(function () {
     if (resetOrc === true) {
-      console.log("reset orc");
+      orcCanvas.classList.add("hide");
+      clearInterval(resetOrcInt);
+      orcCanvas.style.left = "85vw";
+      NEXT_WAVE_BTN.classList.remove("hide");
     }
   }, 500);
 }
+
+NEXT_WAVE_BTN.addEventListener("click", function () {
+  orcCanvas.classList.remove("hide");
+  NEXT_WAVE_BTN.classList.add("hide");
+  startMovement = true;
+  window.startMovement = startMovement;
+  window.resetOrc = resetOrc;
+  console.log(waveCounter);
+  waveCounter++;
+  orcHealth = 30 + 1 * waveCounter;
+  healthBar.style.width = orcHealth + "%";
+});
