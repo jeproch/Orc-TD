@@ -1,2 +1,1 @@
-Next wave button centered as well as making it look better after finishing a wave
-inspiration from grow castle!!      
+opacity of the victory page is 50% but it affects the button. Center the button inside the div   

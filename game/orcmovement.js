@@ -48,8 +48,7 @@ function moveOrc() {
       clearInterval(moveInterval);
 
       isAtEnd = true;
-      towerCanvas.style.backgroundImage =
-        'url("assets/Castle active.png")';
+      towerCanvas.style.backgroundImage = 'url("assets/Castle active.png")';
 
       console.log(isAtEnd);
     }
