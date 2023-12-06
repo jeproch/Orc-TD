@@ -8,8 +8,8 @@ let moveInterval; // Declare moveInterval in the global scope
 document.addEventListener("DOMContentLoaded", function () {
   // Start with inactive images for orc and tower
   orcCanvas.style.backgroundImage =
-    'url("../game/game images/Orcs/Orc 1 - Unact.png")';
-  towerCanvas.style.backgroundImage = 'url("game images/Castle unactive.png")';
+    'url("../game/assets/Orcs/Orc 1 - Unact.png")';
+  towerCanvas.style.backgroundImage = 'url("assets/Castle unactive.png")';
 });
 
 let currentIndexOrc = 0;

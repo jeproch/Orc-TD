@@ -2,6 +2,7 @@
 
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
 const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
+const waveCompleteDiv = document.getElementById("wave-complete-div");
 
 const healthBar = document.getElementById("health-bar");
 
@@ -83,6 +84,7 @@ function resetOrcFunc() {
       clearInterval(resetOrcInt);
       orcCanvas.style.left = "85vw";
       NEXT_WAVE_BTN.classList.remove("hide");
+      waveCompleteDiv.classList.remove("hide");
     }
   }, 500);
 }

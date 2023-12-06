@@ -5,15 +5,36 @@ body {
   overflow: hidden;
 }
 
-#next-wave-btn {
+/*
+<button id="move-orc-btn">Move</button>
+
+*/
+
+#move-orc-btn {
+  z-index: 1;
+  margin: 0;
+  color: blue;
+}
+
+#next-wave-btn button {
   display: flex;
   flex-direction: column; /* Stack buttons vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
+  opacity: 100%; /* To stop wave complete div override otherwise this would have 50 op */
 }
 
 .smooth-transition {
   transition: 0.3s ease-in-out;
+}
+
+.wave-complete-div {
+  width: 100vw;
+  height: 100vw;
+  opacity: 50%;
+  background-color: rgb(155, 39, 39);
+  z-index: 4;
+  margin: 0;
 }
 
 .black-background {
@@ -25,7 +46,7 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("game images/battleground.png");
+  background-image: url("assets/battleground.png");
   background-repeat: no-repeat;
   background-position: center center;
   border: none;
