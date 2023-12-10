@@ -5,18 +5,13 @@ body {
   overflow: hidden;
 }
 
-/*
-<button id="move-orc-btn">Move</button>
-
-*/
-
 #move-orc-btn {
   z-index: 1;
   margin: 0;
   color: blue;
 }
 
-#next-wave-btn button {
+#next-wave-btn {
   display: flex;
   flex-direction: column; /* Stack buttons vertically */
   justify-content: center; /* Center vertically */
@@ -31,10 +26,14 @@ body {
 .wave-complete-div {
   width: 100vw;
   height: 100vw;
-  opacity: 50%;
-  background-color: rgb(155, 39, 39);
-  z-index: 4;
+  opacity: 100%;
+  background-color: rgb(18, 198, 66);
+  z-index: 7;
   margin: 0;
+}
+
+.wave-complete-div button {
+  opacity: 100%;
 }
 
 .black-background {
@@ -128,7 +127,6 @@ body {
   /* left: 22vw; */
   z-index: 1;
   position: absolute;
-  background-color: red;
   opacity: 50%;
   top: 35vh;
 }

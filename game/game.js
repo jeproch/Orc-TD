@@ -48,7 +48,6 @@ START_BTN.addEventListener("click", function () {
 });
 
 MENU_BTN.addEventListener("click", function () {
-  console.log("Menu");
   gameMenu.classList.add("hide");
   menuMenu.classList.remove("hide");
 });

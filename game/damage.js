@@ -1,5 +1,4 @@
 /*References */
-
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
 const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 const waveCompleteDiv = document.getElementById("wave-complete-div");
@@ -9,8 +8,9 @@ const healthBar = document.getElementById("health-bar");
 /* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
 let orcHealth = 30;
+let orcMaxHealth = orcHealth;
 let orcAlive = true;
-let waveCounter = 1;
+let waveCounter = 0;
 let waveComplete = false;
 let resetOrc = false;
 let startMovement = false;
@@ -41,24 +41,43 @@ function dps() {
     if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
       orcHealth -= 10;
       towerHealth -= 10;
-      console.log(
-        "Orc health" + orcHealth + "-" + "tower health" + towerHealth
-      );
 
-      healthBar.style.width = orcHealth + "%";
+      healthBar.style.width = (orcHealth * 100) / orcMaxHealth + "%";
+
+      console.log("Orc health:", orcHealth); // Log orc health for debugging
 
       if (orcHealth <= 0) {
         orcAlive = false;
+        console.log("Orc dead");
+        clearInterval(atTowerInterval);
+        orcCanvas.classList.add("hide");
+        NEXT_WAVE_BTN.classList.remove("hide");
+        alert("Wave " + waveCounter + " complete");
+        waveCounter += 1;
+        waveComplete = true;
+        orcHealth = 30;
+      } else if (orcHealth >= 0) {
+        orcAlive = true;
       }
 
       if (orcAlive === false) {
-        clearInterval(atTowerInterval);
-        console.log("orc is dead" + " Health: " + orcHealth);
-        orcCanvas.classList.add("hide");
+        console.log(orcAlive);
+      } else if (orcAlive === true) {
+        atTowerInterval = setInterval(function () {
+          console.log(orcAlive);
+          if (parseInt(orcCanvas.style.left) <= parseInt(orcPath.style.left)) {
+            orcHealth -= 10;
+            towerHealth -= 10;
 
-        alert("Wave " + waveCounter + " complete");
-        waveCounter = waveCounter + 1;
-        waveComplete = true;
+            console.log("Orc health:", orcHealth); // Log orc health for debugging
+
+            if (orcHealth <= 0) {
+              orcAlive = false;
+              console.log("Orc dead");
+              clearInterval(atTowerInterval);
+            }
+          }
+        }, 500);
       }
     }
   }, 500);
@@ -66,10 +85,7 @@ function dps() {
 
 function checkWave() {
   checkWaveint = setInterval(function () {
-    console.log(resetOrc);
-
     if (waveComplete === true) {
-      console.log("wave complete");
       resetOrc = true;
       waveComplete = false;
       clearInterval(checkWaveint);
@@ -85,6 +101,10 @@ function resetOrcFunc() {
       orcCanvas.style.left = "85vw";
       NEXT_WAVE_BTN.classList.remove("hide");
       waveCompleteDiv.classList.remove("hide");
+    } else {
+      orcCanvas.classList.remove("hide");
+      NEXT_WAVE_BTN.classList.add("hide");
+      waveCompleteDiv.classList.add("hide");
     }
   }, 500);
 }
@@ -95,8 +115,8 @@ NEXT_WAVE_BTN.addEventListener("click", function () {
   startMovement = true;
   window.startMovement = startMovement;
   window.resetOrc = resetOrc;
-  console.log(waveCounter);
-  waveCounter++;
+  orcAlive = true;
   orcHealth = 30 + 1 * waveCounter;
-  healthBar.style.width = orcHealth + "%";
+  healthBar.style.width = (orcHealth * 100) / orcMaxHealth + "%";
+  waveCompleteDiv.classList.add("hide");
 });

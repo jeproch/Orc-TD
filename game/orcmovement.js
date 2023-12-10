@@ -14,7 +14,8 @@ let viewWidth = "vw";
 document.addEventListener("DOMContentLoaded", function () {
   // Start with inactive images for orc and tower
   orcCanvas.style.backgroundImage =
-    'url("../game/game images/Orcs/Orc 1 - Unact.png")';
+    'url("../game/assets/Orcs/Orc 1 - Unact.png")';
+
   towerCanvas.style.backgroundImage = 'url("assets/Castle unactive.png")';
 
   currentPath = 22;
@@ -26,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function checkAfterReset() {
   newInterval = setInterval(function () {
-    console.log("check after reset");
     if (window.startMovement === true) {
       moveOrc();
 
@@ -40,8 +40,6 @@ function moveOrc() {
   let moveInterval = setInterval(function () {
     currentLeft -= 5; //change to 1
 
-    console.log(currentLeft);
-
     orcCanvas.style.left = currentLeft + viewWidth;
 
     if (currentLeft <= 22 /* 22 is the value of currentpath */) {
@@ -49,8 +47,6 @@ function moveOrc() {
 
       isAtEnd = true;
       towerCanvas.style.backgroundImage = 'url("assets/Castle active.png")';
-
-      console.log(isAtEnd);
     }
   }, 500);
 }
@@ -74,7 +70,7 @@ Move_ORC_BTN.addEventListener("click", function () {
   changeImageOrc();
   checkAfterReset();
 
-  console.log(orcPath.style.left);
+  Move_ORC_BTN.classList.add("hide");
 });
 
 let currentIndexOrc = 0;
