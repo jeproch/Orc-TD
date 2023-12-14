@@ -4,14 +4,15 @@ const MENU_BTN = document.getElementById("menu-btn");
 const gameMenu = document.getElementById("game");
 const menuMenu = document.getElementById("menu");
 const MENU_BACK_BTN = document.getElementById("menu-back-btn");
+const MENU_HOME_BTN = document.getElementById("menu-home-btn");
 const startedGame = document.getElementById("started");
 const notStarted = document.getElementById("not-started");
 const SOCIALS_BTN = document.getElementById("socials-btn");
 const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 const waveCompleteDiv = document.getElementById("wave-complete-div");
+const mainMenu = document.getElementById("main-menu");
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mainMenu = document.getElementById("main-menu");
   mainMenu.classList.remove("hide");
 
   waveCompleteDiv.classList.add("hide");
@@ -54,6 +55,12 @@ MENU_BTN.addEventListener("click", function () {
 
 MENU_BACK_BTN.addEventListener("click", function () {
   gameMenu.classList.remove("hide");
+  menuMenu.classList.add("hide");
+});
+
+MENU_HOME_BTN.addEventListener("click", function () {
+  mainMenu.classList.remove("hide");
+  gameMenu.classList.add("hide");
   menuMenu.classList.add("hide");
 });
 
