@@ -59,6 +59,7 @@ function attackTower() {
   damageInterval = setInterval(function () {
     orcHealth -= 10;
     towerHealth -= 10;
+    drawHealthBar();
 
     if (orcHealth <= 0 || towerHealth <= 0) {
       console.log("The tower or Orc has died");
