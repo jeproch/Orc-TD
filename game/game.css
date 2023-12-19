@@ -5,10 +5,27 @@ body {
   overflow: hidden;
 }
 
-#move-orc-btn {
+.move-orc button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: black;
   z-index: 1;
-  margin: 0;
-  color: blue;
+  height: 7vh;
+  width: 100px;
+  font-size: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 14vh;
+  margin-right: 8vw;
+  border-radius: 10%;
+  background-color: yellow;
+  border: none;
+}
+
+.move-orc button:hover {
+  transition: 0.3s ease-in-out;
+  width: 110px;
 }
 
 #next-wave-btn {
