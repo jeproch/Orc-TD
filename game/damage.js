@@ -29,7 +29,6 @@ let moveInterval;
 
 document.addEventListener("DOMContentLoaded", function () {
   drawHealthBar();
-  console.log("dps");
 });
 
 Move_ORC_BTN.addEventListener("click", function () {
