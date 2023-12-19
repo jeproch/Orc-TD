@@ -13,8 +13,6 @@ let viewWidth = "vw";
 
 let currentIndexOrc = 0;
 
-let orcLeft;
-
 document.addEventListener("DOMContentLoaded", function () {
   // Start with inactive images for orc and tower
   orcCanvas.style.backgroundImage =

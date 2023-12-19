@@ -50,7 +50,7 @@ HOME_BUTTON.addEventListener("mouseout", () => {
 //add a black background whilst hovering a social to the other buttons
 
 DISCORD_BUTTON.addEventListener("click", function () {
-  window.location.href = "https://discord.gg/egfJAzS9EM";
+  window.location.href = "https://discord.gg/Wbzx8QVkCd";
 });
 
 HOME_BUTTON.addEventListener("click", function () {

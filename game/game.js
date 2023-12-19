@@ -5,6 +5,7 @@ const gameMenu = document.getElementById("game");
 const menuMenu = document.getElementById("menu");
 const MENU_BACK_BTN = document.getElementById("menu-back-btn");
 const MENU_HOME_BTN = document.getElementById("menu-home-btn");
+const MENU_DISCORD_BTN = document.getElementById("menu-discord-btn");
 const startedGame = document.getElementById("started");
 const notStarted = document.getElementById("not-started");
 const SOCIALS_BTN = document.getElementById("socials-btn");
@@ -62,6 +63,10 @@ MENU_HOME_BTN.addEventListener("click", function () {
   mainMenu.classList.remove("hide");
   gameMenu.classList.add("hide");
   menuMenu.classList.add("hide");
+});
+
+MENU_DISCORD_BTN.addEventListener("click", function () {
+  window.location.href = "https://discord.gg/Wbzx8QVkCd";
 });
 
 SOCIALS_BTN.addEventListener("click", function () {
