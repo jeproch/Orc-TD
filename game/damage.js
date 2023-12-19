@@ -27,16 +27,36 @@ let damageInterval;
 let listenIsAtEndInt;
 let moveInterval;
 
+let waveActive = false;
+
 document.addEventListener("DOMContentLoaded", function () {
   drawHealthBar();
 });
 
+function startWave() {
+  console.log("wavestarted");
+
+  if (waveActive === true) {
+    orcHealth = 30;
+    towerHealth = 100;
+    healthBar.style.width = (orcHealth * 100) / orcMaxHealth + "%";
+  }
+}
+
 Move_ORC_BTN.addEventListener("click", function () {
   //decrease current left to work with the same variable
+  waveActive = true;
   isAtEnd();
+  startWave();
+  currentLeft = 85;
 
   moveInterval = setInterval(function () {
     currentLeft -= 5;
+    console.log(currentLeft);
+
+    if (currentLeft <= 22) {
+      clearInterval(moveInterval);
+    }
   }, 500);
 });
 

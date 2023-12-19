@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
 Move_ORC_BTN.addEventListener("click", function () {
   moveOrc();
   changeImageOrc();
+  currentLeft = 85;
+  orcCanvas.style.left = currentLeft + viewWidth;
 });
 
 function moveOrc() {
@@ -39,7 +41,6 @@ function moveOrc() {
 
   moveInterval = setInterval(function () {
     currentLeft -= 5;
-    console.log(currentLeft);
     orcCanvas.style.left = currentLeft + viewWidth;
     orcPath.style.left = currentPath + viewWidth;
 
@@ -71,4 +72,3 @@ function changeImageOrc() {
 
   orcCanvas.classList.add("smooth-transition");
 }
-
