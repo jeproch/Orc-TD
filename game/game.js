@@ -9,14 +9,10 @@ const MENU_DISCORD_BTN = document.getElementById("menu-discord-btn");
 const startedGame = document.getElementById("started");
 const notStarted = document.getElementById("not-started");
 const SOCIALS_BTN = document.getElementById("socials-btn");
-const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
-const waveCompleteDiv = document.getElementById("wave-complete-div");
 const mainMenu = document.getElementById("main-menu");
 
 document.addEventListener("DOMContentLoaded", function () {
   mainMenu.classList.remove("hide");
-
-  waveCompleteDiv.classList.add("hide");
 
   gameMenu.classList.add("hide");
   bodyEl.classList.remove("black-background");
@@ -30,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set a flag in localStorage to indicate that the alert has been shown
     localStorage.setItem("alertShown", "true");
   }
-
-  NEXT_WAVE_BTN.classList.add("hide");
 });
 
 START_BTN.addEventListener("click", function () {
