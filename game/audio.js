@@ -14,7 +14,7 @@ let clickSound = new Audio(
   "../game/assets/audio/31788__lervis__1200-startstop-button-04.wav"
 ); //`url("../game/assets/Orcs/Orc 1 - Dead.png")`
 
-clickSound.volume = 0.5;
+clickSound.volume = window.volume / 100 || 0.5;
 clickSound.playbackRate = 2; //these are default values
 
 const buttons = [
@@ -33,4 +33,8 @@ buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     clickSound.play();
   });
+});
+
+START_BUTTON.addEventListener("click", function () {
+  console.log(window.volume);
 });

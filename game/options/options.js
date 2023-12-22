@@ -18,15 +18,12 @@ let HOME_BUTTON = document.getElementById("home-btn");
 let OPEN_MENU_BUTTON = document.getElementById("open-menu");
 
 let audioInput = document.getElementById("volumeControl");
+let volume = 0;
 
 OPEN_MENU_BUTTON.addEventListener("click", function () {
   console.log("open menu buttons");
   notOptionsMenu.classList.add("hide");
   optionsMenu.classList.remove("hide");
-});
-
-HOME_BUTTON.addEventListener("click", function () {
-  window.location.href = "/game/game.html";
 });
 
 BACK_BTN.addEventListener("click", function () {
@@ -51,3 +48,26 @@ function hideInitially() {
   waveConfigDiv.classList.add("hide");
   optionsMenu.classList.add("hide");
 }
+
+let CONFIRM_AUDIO_BUTTON = document.getElementById("volume-confirm-btn");
+let audioInputIntervalUpdate;
+//<button id="volume-confirm-btn">Confirm</button>
+
+function updateVolume() {
+  // Clear any existing interval before starting a new one
+
+  audioInputIntervalUpdate = setInterval(function () {
+    volume = audioInput.value;
+    console.log(volume);
+  }, 500);
+}
+
+CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
+  updateVolume();
+});
+
+HOME_BUTTON.addEventListener("click", function () {
+  window.location.href = "/game/game.html";
+});
+
+window.volume = volume;

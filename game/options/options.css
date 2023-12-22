@@ -8,19 +8,6 @@ body {
   overflow: hidden;
 }
 
-/*<ion-icon
-        name="menu-outline"
-        class="options-to-home-btn"
-        id="options-to-home-btn"
-      ></ion-icon> */
-
-/*
-      <div class="options-menu" id="options-menu">
-      <button id="home-btn">Return Home</button>
-      <button id="back-btn" id="back-btn">Back</button>
-    </div>
-      */
-
 .options-menu {
   display: flex;
   justify-content: center; /* Horizontally center */
