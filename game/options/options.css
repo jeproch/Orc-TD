@@ -1,0 +1,118 @@
+div.hide {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background-color: yellow;
+  overflow: hidden;
+}
+
+/*<ion-icon
+        name="menu-outline"
+        class="options-to-home-btn"
+        id="options-to-home-btn"
+      ></ion-icon> */
+
+/*
+      <div class="options-menu" id="options-menu">
+      <button id="home-btn">Return Home</button>
+      <button id="back-btn" id="back-btn">Back</button>
+    </div>
+      */
+
+.options-menu {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 30vh; /* Optional: Set a height to center vertically within the viewport */
+  flex-direction: column;
+}
+
+.options-to-home-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  color: black;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  font-size: 50px;
+}
+
+.options-to-home-btn:hover {
+  transition: 0.1s ease-in-out;
+  font-size: 55px;
+}
+
+h1 {
+  font-size: 70px;
+  display: block; /* or you can use display: inline-block; */
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+  display: block; /* or you can use display: inline-block; */
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 30vh; /* Optional: Set a height to center vertically within the viewport */
+}
+
+button {
+  background-color: yellow;
+  border: 3px solid black;
+  border-radius: 15%;
+  margin: 5px; /* Add margin for spacing between buttons */
+  padding: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 175px;
+}
+
+button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: black;
+  border: 4px solid yellow;
+  color: yellow;
+  border-radius: 17px;
+  width: 200px;
+}
+
+.audio-config {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.input-field-audio {
+  width: 20.5vw;
+  height: 5vh;
+  border: 2px solid #a1b909;
+  border-radius: 15%;
+  margin-top: 10px;
+}
+
+input {
+  width: 20vw;
+  margin-top: 10px; /* Add margin for spacing between the div and the input */
+}
+
+.wave-config {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.wave-config p {
+  font-size: 30px;
+}
