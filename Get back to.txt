@@ -1,0 +1,2 @@
+why do both orcalive console logs return false when one checks for alive and the other for dead, why do bith loops execute when one is true
+line 54 and 60 something
