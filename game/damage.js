@@ -140,4 +140,7 @@ function removeButtonVisibilityInWave() {
 function restoreButtonVisibilityInWave() {
   Move_ORC_BTN.classList.remove("hide");
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/testing
