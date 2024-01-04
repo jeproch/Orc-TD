@@ -2,6 +2,10 @@ div.hide {
   display: none !important;
 }
 
+.heading h1,h2 {
+  color: black;
+}
+
 body {
   margin: 0;
   background-color: yellow;
@@ -77,7 +81,33 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 1;
+} 
+
+.audio-config button {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  text-align: center;
 }
+
+/*
+<div class="audio-config" id="audio-config">
+        <h2>Audio:</h2>
+        <div class="input-field-audio">
+          <input
+            type="range"
+            id="volumeControl"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+          />
+
+          <button id="volume-confirm-btn">Confirm</button>
+        </div>
+      </div>
+*/
 
 .input-field-audio {
   width: 20.5vw;
