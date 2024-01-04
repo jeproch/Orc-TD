@@ -70,4 +70,4 @@ HOME_BUTTON.addEventListener("click", function () {
   window.location.href = "/game/game.html";
 });
 
-window.volume = volume;
+export {volume as soundVolume}
