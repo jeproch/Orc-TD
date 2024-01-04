@@ -54,7 +54,6 @@ Move_ORC_BTN.addEventListener("click", function () {
   currentLeft = 85;
 
   orcCanvas.style.backgroundImage = `url("../game/assets/Orcs/Orc 1 - Unact.png")`;
-  console.log(startWave());
 
   removeButtonVisibilityInWave();
 
