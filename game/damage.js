@@ -8,6 +8,7 @@ let waveCounter = localStorage.getItem("waveCounterLocal") || 0;
 
 //More references
 const healthBar = document.getElementById("health-bar");
+const towerHealthBar = document.getElementById("tower-health-bar");
 
 //Get a reference to the orc
 let orcCanvas = document.querySelector(".orc");
@@ -16,12 +17,6 @@ let waveCounterEl = document.getElementById("wave-counter-p");
 
 waveCounterEl.textContent = "Waves Complete: " + waveCounter;
 
-/* 
-<div class="wave-counter" id="wave-counter">
-        <p id="wave-counter-p">Waves Completeted:</p>
-      </div>
-*/
-
 let currentLeft = 85;
 let currentPath = 22;
 let viewWidth = "vw";
@@ -29,6 +24,7 @@ orcPath.style.left = currentPath + viewWidth;
 
 /* Default values */
 let towerHealth = 100; // For starting out, upgrades will increase this health
+let towerMaxHealth = towerHealth;
 let orcHealth = 30; //These are base values and are bound to change with progress and upgrades
 let orcMaxHealth = orcHealth;
 
@@ -44,6 +40,7 @@ let waveActive = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   drawHealthBar();
+  drawTowerHealthBar();
 });
 
 Move_ORC_BTN.addEventListener("click", function () {
@@ -72,6 +69,7 @@ function startWave() {
     orcHealth = 30;
     towerHealth = 100;
     drawHealthBar();
+    drawTowerHealthBar();
   }
 }
 
@@ -89,11 +87,17 @@ function drawHealthBar() {
   healthBar.style.width = (orcHealth * 100) / orcMaxHealth + "%";
 }
 
+function drawTowerHealthBar() {
+  console.log("draw tower health bar");
+  towerHealthBar.style.width = (towerHealth * 100) / towerMaxHealth + "%";
+}
+
 function attackTower() {
   damageInterval = setInterval(function () {
     orcHealth -= towerDamage; //tower damage is what the tower does to opponents
     towerHealth -= orcDamage;
     drawHealthBar();
+    drawTowerHealthBar();
 
     if (orcHealth <= 0 || towerHealth <= 0) {
       console.log("The tower or Orc has died");
@@ -139,4 +143,3 @@ function removeButtonVisibilityInWave() {
 function restoreButtonVisibilityInWave() {
   Move_ORC_BTN.classList.remove("hide");
 }
-

@@ -170,6 +170,30 @@ body {
   background-color: green; /* Initial health bar color */
 }
 
+.tower-health-bar {
+  position: relative;
+  background-color: green;
+  margin-top: 67vh;
+  margin-left: 50px;
+  width: 50vw; /* Initial width */
+  height: 3vh;
+  border: 4px solid #000; /* 4px solid black border */
+  padding: 7px;
+  box-sizing: border-box; /* Ensures that padding is included in the width */
+  z-index: 2;
+}
+
+.tower-health-bar-border {
+  position: relative;
+  margin-top: 67vh;
+  margin-left: 50px;
+  width: 50vw; /* Initial width */
+  height: 3vh;
+  border: 4px solid #000; /* 4px solid black border */
+  padding: 7px;
+  z-index: 1;
+}
+
 .move-orc image {
   position: relative;
   z-index: 2;
