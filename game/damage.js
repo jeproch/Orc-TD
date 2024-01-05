@@ -9,6 +9,7 @@ let waveCounter = localStorage.getItem("waveCounterLocal") || 0;
 //More references
 const healthBar = document.getElementById("health-bar");
 const towerHealthBar = document.getElementById("tower-health-bar");
+let towerSpanHealthPerc = document.getElementById("health-text");
 
 //Get a reference to the orc
 let orcCanvas = document.querySelector(".orc");
@@ -62,6 +63,8 @@ Move_ORC_BTN.addEventListener("click", function () {
       clearInterval(moveInterval);
     }
   }, 500);
+
+  towerHealthPercentage();
 });
 
 function startWave() {
@@ -77,7 +80,6 @@ function isAtEnd() {
   listenIsAtEndInt = setInterval(function () {
     if (currentLeft <= 22) {
       clearInterval(listenIsAtEndInt);
-      console.log("ISATEND INTERVAL SATISFIED");
       attackTower();
     }
   }, 500);
@@ -98,6 +100,7 @@ function attackTower() {
     towerHealth -= orcDamage;
     drawHealthBar();
     drawTowerHealthBar();
+    towerHealthPercentage();
 
     if (orcHealth <= 0 || towerHealth <= 0) {
       console.log("The tower or Orc has died");
@@ -142,4 +145,10 @@ function removeButtonVisibilityInWave() {
 
 function restoreButtonVisibilityInWave() {
   Move_ORC_BTN.classList.remove("hide");
+}
+
+function towerHealthPercentage() {
+  //this will edit the span element in the html's innertext/textcontent
+  towerSpanHealthPerc.textContent =
+    "Health: " + (towerHealth * 100) / towerMaxHealth + "%";
 }
