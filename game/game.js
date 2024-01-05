@@ -11,6 +11,7 @@ const notStarted = document.getElementById("not-started");
 const SOCIALS_BTN = document.getElementById("socials-btn");
 const mainMenu = document.getElementById("main-menu");
 const OPTIONS_BTN = document.getElementById("options-btn");
+const BLOG_BTN = document.getElementById("blog-btn");
 
 document.addEventListener("DOMContentLoaded", function () {
   mainMenu.classList.remove("hide");
@@ -70,4 +71,8 @@ SOCIALS_BTN.addEventListener("click", function () {
 
 OPTIONS_BTN.addEventListener("click", function () {
   window.location.href = "/game/options/options.html";
+});
+
+BLOG_BTN.addEventListener("click", function () {
+  window.location.href = "/game/blog/blog.html";
 });

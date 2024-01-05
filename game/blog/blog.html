@@ -7,11 +7,71 @@
     <link rel="stylesheet" href="blog.css" />
   </head>
   <body>
-    <div class="heading">
-      <h1>Orc TD's Official Blog!</h1>
-      <h2>Everything Orc TD</h2>
+    <div class="blog-page" id="blog-page">
+      <div class="heading">
+        <div class="text">
+          <h1>Orc TD's Official Blog!</h1>
+          <h2 id="h2-heading">Everything Orc TD</h2>
+        </div>
+        <div class="buttons">
+          <ion-icon name="menu-outline" id="menu-btn"></ion-icon>
+        </div>
+      </div>
+
+      <hr class="hr-under-heading" />
+
+      <p id="news-heading">News:</p>
+
+      <div class="news-container">
+        <ul>
+          <li>Orc TD has recently added a health bar for the tower</li>
+        </ul>
+      </div>
+
+      <!--
+        <div class="news-container">
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+
+      -->
+      <div class="news-container">
+        <ul>
+          <li>
+            Access the game repository:
+            <a href="https://github.com/jeproch/Tower-defense-game">Here</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="news-container">
+        <ul>
+          <li>No new news on the mobile version of the game</li>
+        </ul>
+      </div>
+
+      <div class="news-container">
+        <ul>
+          <li>Contribute to the assets of the game in the github repository</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="menu-page" id="menu-page">
+      <button id="mm-btn">Main Menu</button>
+      <button id="back-btn">Back</button>
     </div>
 
     <script src="blog.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
