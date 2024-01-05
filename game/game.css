@@ -135,6 +135,12 @@ body {
   width: 200px;
 }
 
+.display-version p {
+  color: black;
+  position: absolute;
+  top: 95%;
+}
+
 /* ORCS */
 
 .orc-path {
@@ -188,6 +194,7 @@ body {
   z-index: 1;
   background-color: transparent;
   box-sizing: border-box; /* Ensures that border is included in the size */
+  border-radius: 1%;
 }
 
 .health-text {
