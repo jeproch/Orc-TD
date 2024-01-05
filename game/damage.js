@@ -36,6 +36,37 @@ let towerDamage = 20;
 let damageInterval;
 let listenIsAtEndInt;
 let moveInterval;
+let checkforupgradeint;
+
+let multiplierDeterminator = waveCounter;
+let currentMultiplier = 0;
+
+//multiplier using wavecounter
+/*
+
+function isEven(multiplierDeterminator) {
+  multiplierDeterminator = waveCounter;
+  return multiplierDeterminator % 2 === 0;
+}
+
+let checkEvenInt = setInterval(function () {
+  if (isEven(multiplierDeterminator)) {
+    console.log("wave counter is even");
+    console.log(multiplierDeterminator);
+  } else {
+    console.log("uneven");
+  }
+}, 500);
+*/
+function isEven(multiplierDeterminator) {
+  multiplierDeterminator = waveCounter;
+  return multiplierDeterminator % 2 === 0;
+}
+
+if (isEven(multiplierDeterminator)) {
+  currentMultiplier++;
+  console.log("the current active multiplier is =  " + currentMultiplier);
+}
 
 let waveActive = false;
 
@@ -49,6 +80,7 @@ Move_ORC_BTN.addEventListener("click", function () {
   waveActive = true;
   isAtEnd();
   startWave();
+  isEven(multiplierDeterminator);
   currentLeft = 85;
 
   orcCanvas.style.backgroundImage = `url("../game/assets/Orcs/Orc 1 - Unact.png")`;
