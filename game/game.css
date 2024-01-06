@@ -317,3 +317,10 @@ body {
   border-radius: 17px;
   width: 200px;
 }
+
+#back-to-menu-from-upgrades {
+  position: fixed; /* Fixed positioning */
+  bottom: 0; /* Align to the bottom of the viewport */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+}
