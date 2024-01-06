@@ -184,3 +184,6 @@ function towerHealthPercentage() {
   towerSpanHealthPerc.textContent =
     "Health: " + (towerHealth * 100) / towerMaxHealth + "%";
 }
+
+export { waveCounter as waveCounter };
+export { orcHealth as orcHealth };
