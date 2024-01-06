@@ -12,6 +12,7 @@ const SOCIALS_BTN = document.getElementById("socials-btn");
 const mainMenu = document.getElementById("main-menu");
 const OPTIONS_BTN = document.getElementById("options-btn");
 const BLOG_BTN = document.getElementById("blog-btn");
+const HELP_BTN = document.getElementById("menu-help-btn");
 let upgradesPage = document.getElementById("upgrades-menu");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -78,4 +79,8 @@ OPTIONS_BTN.addEventListener("click", function () {
 
 BLOG_BTN.addEventListener("click", function () {
   window.location.href = "/game/blog/blog.html";
+});
+
+HELP_BTN.addEventListener("click", function () {
+  window.location.href = "/game/help/help.html";
 });
