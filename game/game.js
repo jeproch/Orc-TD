@@ -12,12 +12,15 @@ const SOCIALS_BTN = document.getElementById("socials-btn");
 const mainMenu = document.getElementById("main-menu");
 const OPTIONS_BTN = document.getElementById("options-btn");
 const BLOG_BTN = document.getElementById("blog-btn");
+let upgradesPage = document.getElementById("upgrades-menu");
 
 document.addEventListener("DOMContentLoaded", function () {
   mainMenu.classList.remove("hide");
 
   gameMenu.classList.add("hide");
   bodyEl.classList.remove("black-background");
+
+  upgradesPage.classList.add("hide");
 
   menuMenu.classList.add("hide");
   // Check if the alert has been shown before
