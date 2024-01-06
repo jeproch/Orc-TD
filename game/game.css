@@ -70,16 +70,16 @@ body {
   background-position: center center;
   border: none;
   margin: 0;
+  z-index: 0; /* Set a default z-index for the game container */
 }
 
 .tower {
   width: 20vw;
   position: absolute;
-  bottom: 0; /* Position it at the bottom */
+  bottom: 0;
   left: 0;
   z-index: 1;
-  height: 50vh; /* Fixed height of 50% of the viewport height */
-  /*background-image: url("game images/Castle unactive.png"); */
+  height: 50vh;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -263,4 +263,57 @@ body {
 
 .menu-buttons button {
   margin-top: 40px;
+}
+
+.upgrades button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: black;
+  z-index: 1;
+  height: 7vh;
+  width: 170px;
+  font-size: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 5vh;
+  margin-right: 8vw;
+  border-radius: 10%;
+  background-color: yellow;
+  border: none;
+}
+
+.upgrades button:hover {
+  transition: 0.3s ease-in-out;
+  width: 200px;
+}
+
+.upgrades-menu {
+  height: 100vh;
+  width: 100vw;
+  background-color: yellow;
+  margin: 0;
+  z-index: 2; /* Increase the z-index for the upgrades menu */
+  color: black;
+  text-align: center;
+}
+
+.upgrades-menu button {
+  background-color: yellow;
+  border: 3px solid black;
+  border-radius: 15%;
+  margin: 5px 0; /* Add margin for spacing between buttons */
+  padding: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 175px;
+}
+
+.upgrades-menu button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: black;
+  border: 4px solid yellow;
+  color: yellow;
+  border-radius: 17px;
+  width: 200px;
 }
