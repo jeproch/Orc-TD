@@ -1,7 +1,6 @@
 //currency's name is Orc coins
 
-import { waveCounter } from "./damage.js";
-import { orcHealth } from "./damage.js";
+import { waveCounter, orcHealth } from "./damage.js";
 
 let balancePar = document.getElementById("balance-p");
 let upgradesPage = document.getElementById("upgrades-menu");
@@ -62,3 +61,6 @@ DPS_upgrade_BUTTON.addEventListener("click", function () {
     alert("insufficient currency need 10");
   }
 });
+
+export { hpMultiplier as hpMultiplier };
+export { dpsMultiplier as dpsMultiplier };
