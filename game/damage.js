@@ -1,3 +1,5 @@
+import { dpsMultiplier, hpMultiplier } from "./currency.js";
+
 /*References */
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
 const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
@@ -24,49 +26,17 @@ let viewWidth = "vw";
 orcPath.style.left = currentPath + viewWidth;
 
 /* Default values */
-let towerHealth = 100; // For starting out, upgrades will increase this health
+let towerHealth = 100 + hpMultiplier; // For starting out, upgrades will increase this health
 let towerMaxHealth = towerHealth;
 let orcHealth = 30; //These are base values and are bound to change with progress and upgrades
 let orcMaxHealth = orcHealth;
 
-let towerLevel = 1;
 let orcDamage = 10;
 let towerDamage = 20;
 
 let damageInterval;
 let listenIsAtEndInt;
 let moveInterval;
-let checkforupgradeint;
-
-let multiplierDeterminator = waveCounter;
-let currentMultiplier = 0;
-
-//multiplier using wavecounter
-/*
-
-function isEven(multiplierDeterminator) {
-  multiplierDeterminator = waveCounter;
-  return multiplierDeterminator % 2 === 0;
-}
-
-let checkEvenInt = setInterval(function () {
-  if (isEven(multiplierDeterminator)) {
-    console.log("wave counter is even");
-    console.log(multiplierDeterminator);
-  } else {
-    console.log("uneven");
-  }
-}, 500);
-*/
-function isEven(multiplierDeterminator) {
-  multiplierDeterminator = waveCounter;
-  return multiplierDeterminator % 2 === 0;
-}
-
-if (isEven(multiplierDeterminator)) {
-  currentMultiplier++;
-  console.log("the current active multiplier is =  " + currentMultiplier);
-}
 
 let waveActive = false;
 
@@ -80,8 +50,9 @@ Move_ORC_BTN.addEventListener("click", function () {
   waveActive = true;
   isAtEnd();
   startWave();
-  isEven(multiplierDeterminator);
   currentLeft = 85;
+  console.log(towerHealth);
+  towerMaxHealth = towerHealth;
 
   orcCanvas.style.backgroundImage = `url("../game/assets/Orcs/Orc 1 - Unact.png")`;
 
@@ -102,7 +73,7 @@ Move_ORC_BTN.addEventListener("click", function () {
 function startWave() {
   if (waveActive === true) {
     orcHealth = 30;
-    towerHealth = 100;
+    towerHealth = 100 + hpMultiplier / 2;
     drawHealthBar();
     drawTowerHealthBar();
   }
@@ -123,7 +94,8 @@ function drawHealthBar() {
 
 function drawTowerHealthBar() {
   console.log("draw tower health bar");
-  towerHealthBar.style.width = (towerHealth * 100) / towerMaxHealth + "%";
+  let percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
+  towerHealthBar.style.width = percentage + "%";
 }
 
 function attackTower() {
@@ -181,8 +153,8 @@ function restoreButtonVisibilityInWave() {
 
 function towerHealthPercentage() {
   //this will edit the span element in the html's innertext/textcontent
-  towerSpanHealthPerc.textContent =
-    "Health: " + (towerHealth * 100) / towerMaxHealth + "%";
+  let percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
+  towerSpanHealthPerc.textContent = "Health: " + percentage + "%";
 }
 
 export { waveCounter as waveCounter };
