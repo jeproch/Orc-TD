@@ -1,16 +1,16 @@
 //currency's name is Orc coins
 
-import { waveCounter, orcHealth } from "./damage.js";
+import { waveCounter, importedOrcHealth } from "./damage.js";
 
 let balancePar = document.getElementById("balance-p");
 let upgradesPage = document.getElementById("upgrades-menu");
 let balanceMsg = "Balance: ";
 
-let hpMultiplier = 1;
+let hpMultiplier = localStorage.getItem("hpUpgradeCounterLocal") || 1;
 let dpsMultiplier = 1;
 
-let hpUgradeCounter = 0;
-let dpsUpgradeCounter = 0;
+let hpUgradeCounter = localStorage.getItem("hpUpgradeCounterLocal") || 0;
+let dpsUpgradeCounter = localStorage.getItem("dpsUpgradeCounterLocal") || 0;
 
 let UPGRADES_BTN = document.getElementById("upgrades-btn");
 let HP_upgrade_BUTTON = document.getElementById("hp-upgrade-btn");
@@ -43,7 +43,9 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
     orcCoins -= 10;
     localStorage.setItem("orcCoinsLocal", orcCoins);
     balancePar.textContent = balanceMsg + orcCoins;
-    hpUgradeCounter++;
+    setHpAsLocal();
+    hpMultiplier = hpUgradeCounter;
+    console.log(hpMultiplier);
     HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   } else {
     alert("insufficient currency need 10");
@@ -55,12 +57,22 @@ DPS_upgrade_BUTTON.addEventListener("click", function () {
     orcCoins -= 10;
     localStorage.setItem("orcCoinsLocal", orcCoins);
     balancePar.textContent = balanceMsg + orcCoins;
-    dpsUpgradeCounter++;
+    setDpsAsLocal();
     DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
   } else {
     alert("insufficient currency need 10");
   }
 });
+
+function setHpAsLocal() {
+  hpUgradeCounter++;
+  localStorage.setItem("hpUpgradeCounterLocal", hpUgradeCounter);
+}
+
+function setDpsAsLocal() {
+  dpsUpgradeCounter++;
+  localStorage.setItem("dpsUpgradeCounterLocal", dpsUpgradeCounter);
+}
 
 export { hpMultiplier as hpMultiplier };
 export { dpsMultiplier as dpsMultiplier };
