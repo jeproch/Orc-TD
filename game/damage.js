@@ -1,8 +1,8 @@
 import { dpsMultiplier, hpMultiplier } from "./currency.js";
+import { orcHealth as importedOrcHealth } from "./orc_development.js";
 
 /*References */
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
-const NEXT_WAVE_BTN = document.getElementById("next-wave-btn");
 
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
@@ -28,11 +28,10 @@ orcPath.style.left = currentPath + viewWidth;
 /* Default values */
 let towerHealth = 100 + hpMultiplier; // For starting out, upgrades will increase this health
 let towerMaxHealth = towerHealth;
-let orcHealth = 30; //These are base values and are bound to change with progress and upgrades
-let orcMaxHealth = orcHealth;
+let orcMaxHealth = importedOrcHealth;
 
 let orcDamage = 10;
-let towerDamage = 20;
+let towerDamage = 20 + dpsMultiplier;
 
 let damageInterval;
 let listenIsAtEndInt;
@@ -41,6 +40,7 @@ let moveInterval;
 let waveActive = false;
 
 document.addEventListener("DOMContentLoaded", function () {
+  console.log(importedOrcHealth);
   drawHealthBar();
   drawTowerHealthBar();
 });
@@ -50,6 +50,7 @@ Move_ORC_BTN.addEventListener("click", function () {
   waveActive = true;
   isAtEnd();
   startWave();
+  drawHealthBar();
   currentLeft = 85;
   console.log(towerHealth);
   towerMaxHealth = towerHealth;
@@ -72,8 +73,11 @@ Move_ORC_BTN.addEventListener("click", function () {
 
 function startWave() {
   if (waveActive === true) {
-    orcHealth = 30;
-    towerHealth = 100 + hpMultiplier / 2;
+    // Update orcHealth indirectly, for example, by modifying properties
+    // inside the orcHealth object (if it's an object)
+    orcMaxHealth = importedOrcHealth;
+    towerMaxHealth = 100 + hpMultiplier * 2; // Update towerMaxHealth
+    towerHealth = towerMaxHealth; // Reset towerHealth to full
     drawHealthBar();
     drawTowerHealthBar();
   }
@@ -89,7 +93,7 @@ function isAtEnd() {
 }
 
 function drawHealthBar() {
-  healthBar.style.width = (orcHealth * 100) / orcMaxHealth + "%";
+  healthBar.style.width = (importedOrcHealth * 100) / orcMaxHealth + "%";
 }
 
 function drawTowerHealthBar() {
@@ -100,20 +104,22 @@ function drawTowerHealthBar() {
 
 function attackTower() {
   damageInterval = setInterval(function () {
-    orcHealth -= towerDamage; //tower damage is what the tower does to opponents
+    importedOrcHealth -= towerDamage; //tower damage is what the tower does to opponents
     towerHealth -= orcDamage;
     drawHealthBar();
     drawTowerHealthBar();
     towerHealthPercentage();
 
-    if (orcHealth <= 0 || towerHealth <= 0) {
+    if (importedOrcHealth <= 0 || towerHealth <= 0) {
       console.log("The tower or Orc has died");
-      console.log("Tower health: " + towerHealth + " Orc health: " + orcHealth);
+      console.log(
+        "Tower health: " + towerHealth + " Orc health: " + importedOrcHealth
+      );
 
       waveActive = false;
 
-      if (orcHealth < 0) {
-        orcHealth = 0;
+      if (importedOrcHealth < 0) {
+        importedOrcHealth = 0;
         showDeadOrc();
         restoreButtonVisibilityInWave();
         incrementWave();
@@ -158,4 +164,4 @@ function towerHealthPercentage() {
 }
 
 export { waveCounter as waveCounter };
-export { orcHealth as orcHealth };
+export { importedOrcHealth };
