@@ -1,13 +1,17 @@
 //currency's name is Orc coins
 
-import { waveCounter, importedOrcHealth } from "./damage.js";
+import { waveCounter } from "./damage.js"; //DO NOT REMOVE THIS
 
 let balancePar = document.getElementById("balance-p");
 let upgradesPage = document.getElementById("upgrades-menu");
 let balanceMsg = "Balance: ";
 
-let hpMultiplier = localStorage.getItem("hpUpgradeCounterLocal") || 1;
-let dpsMultiplier = 1;
+var hpMultiplier = parseFloat(
+  localStorage.getItem("hpUpgradeCounterLocal") || 1
+);
+var dpsMultiplier = parseFloat(
+  localStorage.getItem("dpsUpgradeCounterLocal") || 1
+);
 
 let hpUgradeCounter = localStorage.getItem("hpUpgradeCounterLocal") || 0;
 let dpsUpgradeCounter = localStorage.getItem("dpsUpgradeCounterLocal") || 0;
@@ -19,7 +23,7 @@ let DPS_upgrade_BUTTON = document.getElementById("dps-upgrade-btn");
 let gamePage = document.getElementById("game");
 let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
 
-let orcCoins = 1000000; //localStorage.getItem("orcCoinsLocal") || waveCounter;
+let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter;
 
 document.addEventListener("DOMContentLoaded", function () {
   upgradesPage.classList.add("hide");
