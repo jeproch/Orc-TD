@@ -186,6 +186,7 @@ body {
 
 .tower-health-bar-border {
   position: absolute;
+  overflow: hidden;
   top: 500px;
   left: 5px;
   width: 200%;
