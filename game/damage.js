@@ -7,6 +7,7 @@ const Move_ORC_BTN = document.getElementById("move-orc-btn");
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
 var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
+let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter;
 
 //More references
 const healthBar = document.getElementById("health-bar");
@@ -40,11 +41,14 @@ let waveActive = false;
 let orcHealth;
 let orcMaxHealth;
 let orcDamage;
+let percentage;
 
 document.addEventListener("DOMContentLoaded", function () {
   drawOrcHealthBar();
   drawTowerHealthBar();
+  towerHealthPercentage();
   console.log(orcHealthAdvances);
+  console.log(orcCoins);
 
   // Perform other operations
   let orcHealth = 30 + orcHealthAdvances;
@@ -71,6 +75,8 @@ Move_ORC_BTN.addEventListener("click", function () {
   isAtEnd();
   startWave();
   drawOrcHealthBar();
+  applyTowerUpgrades(); // it starts the session with the upgrades and keeps those same values whole way through
+  syncUpgrades();
   currentLeft = 85;
   console.log(towerHealth);
   towerMaxHealth = towerHealth;
@@ -81,7 +87,6 @@ Move_ORC_BTN.addEventListener("click", function () {
 
   moveInterval = setInterval(function () {
     currentLeft -= 5;
-    console.log(currentLeft);
 
     if (currentLeft <= 22) {
       clearInterval(moveInterval);
@@ -105,6 +110,22 @@ function startWave() {
   }
 }
 
+function syncUpgrades() {
+  if (
+    hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
+  ) {
+    hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
+  }
+
+  //dps too
+
+  if (
+    dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
+  ) {
+    dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"));
+  }
+}
+
 function isAtEnd() {
   listenIsAtEndInt = setInterval(function () {
     if (currentLeft <= 22) {
@@ -119,12 +140,11 @@ function drawOrcHealthBar() {
 }
 
 function drawTowerHealthBar() {
-  let percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
+  percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
   towerHealthBar.style.width = percentage + "%";
 }
 
 function attackTower() {
-  console.log("dpsMultiplier in attackTower:", dpsMultiplier);
   towerDamage = 20 + dpsMultiplier;
   damageInterval = setInterval(function () {
     orcDamage = 10 + orcDamageAdvances;
@@ -138,6 +158,7 @@ function attackTower() {
     if (orcHealth <= 0 || towerHealth <= 0) {
       console.log("The tower or Orc has died");
       console.log("Tower health: " + towerHealth + " Orc health: " + orcHealth);
+      console.log("Tower damage: " + towerDamage + " Orc damage: " + orcDamage);
 
       waveActive = false;
 
@@ -162,6 +183,10 @@ function orcIsDead() {
   showDeadOrc();
   restoreButtonVisibilityInWave();
   incrementWave();
+  orcCoins++;
+  let balancePar = document.getElementById("balance-p");
+  let balanceMsg = "Balance: ";
+  balancePar.textContent = balanceMsg + orcCoins;
 }
 
 function towerIsDead() {
@@ -194,13 +219,21 @@ function restoreButtonVisibilityInWave() {
 
 function towerHealthPercentage() {
   //this will edit the span element in the html's innertext/textcontent
-  let percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
+  percentage = Math.floor((towerHealth / towerMaxHealth) * 100);
+  if (isNaN(percentage)) {
+    percentage = 100;
+  }
   towerSpanHealthPerc.textContent = "Health: " + percentage + "%";
 
   if (percentage < 0) {
     percentage = 0;
     towerSpanHealthPerc.textContent = "Health: " + percentage + "%";
   }
+}
+
+function applyTowerUpgrades() {
+  towerHealth = 100 + hpMultiplier;
+  towerDamage = 20 + dpsMultiplier;
 }
 
 export { waveCounter as waveCounter };

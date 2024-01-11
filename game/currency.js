@@ -1,9 +1,9 @@
 //currency's name is Orc coins
 
 import { waveCounter } from "./damage.js"; //DO NOT REMOVE THIS
+import { wasReset } from "./options/options.js";
 
 let balancePar = document.getElementById("balance-p");
-let upgradesPage = document.getElementById("upgrades-menu");
 let balanceMsg = "Balance: ";
 
 var hpMultiplier = parseFloat(
@@ -21,6 +21,7 @@ let HP_upgrade_BUTTON = document.getElementById("hp-upgrade-btn");
 let DPS_upgrade_BUTTON = document.getElementById("dps-upgrade-btn");
 
 let gamePage = document.getElementById("game");
+let upgradesPage = document.getElementById("upgrades-menu");
 let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
 
 let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter;

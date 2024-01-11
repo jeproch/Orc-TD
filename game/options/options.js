@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("content loaded");
-
   hideInitially();
 });
 
 let AUDIO_BTN = document.getElementById("audio-btn");
 let RESET_BTN = document.getElementById("reset-btn");
 
+/* reset btn's open menu  */
+let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
+var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
+var resettedWaveCounter = 0;
+var wasReset = false;
+
 let audioConfigDiv = document.getElementById("audio-config");
 let waveConfigDiv = document.getElementById("wave-config");
 
 let optionsMenu = document.getElementById("options-menu");
 let notOptionsMenu = document.getElementById("not-options");
-let BACK_BTN = document.getElementById("back-btn"); //<button id="back-btn" id="back-btn">Back</button>
-
+let BACK_BTN = document.getElementById("back-btn");
 let HOME_BUTTON = document.getElementById("home-btn");
 let OPEN_MENU_BUTTON = document.getElementById("open-menu");
 
@@ -62,12 +65,29 @@ function updateVolume() {
   }, 500);
 }
 
+function resetWave() {
+  console.log("resetted the waves localstorage");
+  resettedWaveCounter = localStorage.setItem(
+    "waveCounterLocal",
+    resettedWaveCounter
+  );
+  wasReset = true;
+  console.log(localStorage.getItem("waveCounterLocal"));
+
+}
+
 CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
   updateVolume();
+});
+
+CONFIRM_RESET_BTN.addEventListener("click", function () {
+  resetWave();
+  CONFIRM_RESET_BTN.textContent = "Done!";
 });
 
 HOME_BUTTON.addEventListener("click", function () {
   window.location.href = "/game/game.html";
 });
 
-export {volume as soundVolume}
+export { volume as soundVolume };
+export { wasReset };
