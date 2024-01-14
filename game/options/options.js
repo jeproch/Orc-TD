@@ -73,7 +73,6 @@ function resetWave() {
   );
   wasReset = true;
   console.log(localStorage.getItem("waveCounterLocal"));
-
 }
 
 CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
@@ -83,6 +82,7 @@ CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
 CONFIRM_RESET_BTN.addEventListener("click", function () {
   resetWave();
   CONFIRM_RESET_BTN.textContent = "Done!";
+  console.log("wasReset after reset: ", wasReset);
 });
 
 HOME_BUTTON.addEventListener("click", function () {
