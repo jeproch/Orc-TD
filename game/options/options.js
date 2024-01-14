@@ -8,7 +8,7 @@ let RESET_BTN = document.getElementById("reset-btn");
 /* reset btn's open menu  */
 let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
-var resettedWaveCounter = 0;
+let resettedWaveCounter = 0;
 var wasReset = false;
 
 let audioConfigDiv = document.getElementById("audio-config");
@@ -58,7 +58,6 @@ let audioInputIntervalUpdate;
 
 function updateVolume() {
   // Clear any existing interval before starting a new one
-
   audioInputIntervalUpdate = setInterval(function () {
     volume = audioInput.value;
     console.log(volume);
