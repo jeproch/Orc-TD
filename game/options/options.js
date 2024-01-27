@@ -89,4 +89,4 @@ HOME_BUTTON.addEventListener("click", function () {
 });
 
 export { volume as soundVolume };
-export { wasReset };
+export { wasReset as resettedGameProgress };
