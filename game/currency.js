@@ -1,6 +1,7 @@
 //currency's name is Orc coins
 
 import { waveCounter } from "./damage.js"; //DO NOT REMOVE THIS
+import { resettedGameProgress } from "./options/options.js";
 
 let balancePar = document.getElementById("balance-p");
 let balanceMsg = "Balance: ";
