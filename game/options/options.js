@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 let AUDIO_BTN = document.getElementById("audio-btn");
 let RESET_BTN = document.getElementById("reset-btn");
 
+let runAudioInt;
+
 /* reset btn's open menu  */
 let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 
@@ -18,7 +20,6 @@ let HOME_BUTTON = document.getElementById("home-btn");
 let OPEN_MENU_BUTTON = document.getElementById("open-menu");
 
 let audioInput = document.getElementById("volumeControl");
-let volume = 0;
 
 OPEN_MENU_BUTTON.addEventListener("click", function () {
   console.log("open menu buttons");
@@ -31,24 +32,10 @@ BACK_BTN.addEventListener("click", function () {
   optionsMenu.classList.add("hide");
 });
 
-AUDIO_BTN.addEventListener("click", function () {
-  console.log("audio button");
-  audioConfigDiv.classList.remove("hide");
-  waveConfigDiv.classList.add("hide");
-});
-
 RESET_BTN.addEventListener("click", function () {
   console.log("reset button");
   waveConfigDiv.classList.remove("hide");
   audioConfigDiv.classList.add("hide");
-});
-
-let CONFIRM_AUDIO_BUTTON = document.getElementById("volume-confirm-btn");
-let audioInputIntervalUpdate;
-//<button id="volume-confirm-btn">Confirm</button>
-
-CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
-  updateVolume();
 });
 
 HOME_BUTTON.addEventListener("click", function () {
@@ -74,3 +61,30 @@ function rewriteLocalStorage() {
   let reference = 0;
   let localReference = localStorage.setItem("waveCounterLocal", reference);
 }
+
+//audio
+let CONFIRM_AUDIO_BUTTON = document.getElementById("volume-confirm-btn");
+//<button id="volume-confirm-btn">Confirm</button>
+
+let clickVolume;
+
+AUDIO_BTN.addEventListener("click", function () {
+  clickVolume = localStorage.getItem("localSoundVolume") || 0.5;
+  console.log("audio button");
+  audioConfigDiv.classList.remove("hide");
+  waveConfigDiv.classList.add("hide");
+  runAudioInt = setInterval(function () {
+    clickVolume = audioInput.value / 100;
+    console.log(clickVolume);
+  }, 500);
+});
+
+CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
+  clickVolume = Number(clickVolume.toFixed(1));
+  localStorage.setItem("localSoundVolume", clickVolume);
+
+  console.log(localStorage.getItem("localSoundVolume"));
+
+  clearInterval(runAudioInt);
+  audioConfigDiv.classList.add("hide");
+});
