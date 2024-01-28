@@ -73,6 +73,4 @@ CONFIRM_RESET_BTN.addEventListener("click", () => {
 function rewriteLocalStorage() {
   let reference = 0;
   let localReference = localStorage.setItem("waveCounterLocal", reference);
-
-  console.log(reference);
 }
