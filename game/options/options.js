@@ -66,6 +66,7 @@ function hideInitially() {
 CONFIRM_RESET_BTN.addEventListener("click", () => {
   rewriteLocalStorage();
   console.log(localStorage.getItem("waveCounterLocal"));
+  waveConfigDiv.classList.add("hide");
 });
 
 //write a function that exports if something was reset to the main game
