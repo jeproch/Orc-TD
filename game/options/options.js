@@ -55,16 +55,18 @@ HOME_BUTTON.addEventListener("click", function () {
   window.location.href = "/game/game.html";
 });
 
-CONFIRM_RESET_BTN.addEventListener("click", () => {
-  rewriteLocalStorage();
-  console.log(localStorage.getItem("waveCounterLocal"));
-});
-
 function hideInitially() {
   audioConfigDiv.classList.add("hide");
   waveConfigDiv.classList.add("hide");
   optionsMenu.classList.add("hide");
 }
+
+//waves
+
+CONFIRM_RESET_BTN.addEventListener("click", () => {
+  rewriteLocalStorage();
+  console.log(localStorage.getItem("waveCounterLocal"));
+});
 
 //write a function that exports if something was reset to the main game
 function rewriteLocalStorage() {
