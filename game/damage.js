@@ -3,6 +3,7 @@ import { orcHealthAdvances, orcDamageAdvances } from "./orc_development.js";
 
 /*References */
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
+let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
@@ -19,7 +20,8 @@ let orcCanvas = document.querySelector(".orc");
 let orcPath = document.querySelector(".orc-path canvas");
 let waveCounterEl = document.getElementById("wave-counter-p");
 
-waveCounterEl.textContent = "Waves Complete: " + waveCounter;
+waveCounterEl.textContent =
+  "Waves Complete: " + localStorage.getItem("waveCounterLocal");
 
 let currentLeft = 85;
 let currentPath = 22;

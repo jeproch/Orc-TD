@@ -1,11 +1,4 @@
 //<button id="start-btn">Start</button>
-
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("this content is loaded from audio.js");
-});
-
-import { soundVolume } from "./options/options.js";
-
 let START_BUTTON = document.getElementById("start-btn");
 let OPTIONS_BUTTON = document.getElementById("options-btn");
 let BLOG_BUTTON = document.getElementById("blog-btn");
@@ -20,7 +13,7 @@ let clickSound = new Audio(
   "../game/assets/audio/31788__lervis__1200-startstop-button-04.wav"
 ); //`url("../game/assets/Orcs/Orc 1 - Dead.png")`
 
-clickSound.volume = soundVolume / 100 || 0.5;
+clickSound.volume = 0.5;
 clickSound.playbackRate = 2; //these are default values
 
 const buttons = [
@@ -42,7 +35,5 @@ buttons.forEach(function (button) {
 });
 
 START_BUTTON.addEventListener("click", function () {
-  let displayInterval = setInterval(function () {
-    console.log(soundVolume);
-  }, 500);
+  console.log(START_BUTTON, "was clicked");
 });

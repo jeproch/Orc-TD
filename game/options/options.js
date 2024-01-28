@@ -7,9 +7,6 @@ let RESET_BTN = document.getElementById("reset-btn");
 
 /* reset btn's open menu  */
 let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
-var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
-let resettedWaveCounter = 0;
-var wasReset = false;
 
 let audioConfigDiv = document.getElementById("audio-config");
 let waveConfigDiv = document.getElementById("wave-config");
@@ -46,47 +43,33 @@ RESET_BTN.addEventListener("click", function () {
   audioConfigDiv.classList.add("hide");
 });
 
-function hideInitially() {
-  audioConfigDiv.classList.add("hide");
-  waveConfigDiv.classList.add("hide");
-  optionsMenu.classList.add("hide");
-}
-
 let CONFIRM_AUDIO_BUTTON = document.getElementById("volume-confirm-btn");
 let audioInputIntervalUpdate;
 //<button id="volume-confirm-btn">Confirm</button>
 
-function updateVolume() {
-  // Clear any existing interval before starting a new one
-  audioInputIntervalUpdate = setInterval(function () {
-    volume = audioInput.value;
-    console.log(volume);
-  }, 500);
-}
-
-function resetWave() {
-  console.log("resetted the waves localstorage");
-  resettedWaveCounter = localStorage.setItem(
-    "waveCounterLocal",
-    resettedWaveCounter
-  );
-  wasReset = true;
-  console.log(localStorage.getItem("waveCounterLocal"));
-}
-
 CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
   updateVolume();
-});
-
-CONFIRM_RESET_BTN.addEventListener("click", function () {
-  resetWave();
-  CONFIRM_RESET_BTN.textContent = "Done!";
-  console.log("wasReset after reset: ", wasReset);
 });
 
 HOME_BUTTON.addEventListener("click", function () {
   window.location.href = "/game/game.html";
 });
 
-export { volume as soundVolume };
-export { wasReset as resettedGameProgress };
+CONFIRM_RESET_BTN.addEventListener("click", () => {
+  rewriteLocalStorage();
+  console.log(localStorage.getItem("waveCounterLocal"));
+});
+
+function hideInitially() {
+  audioConfigDiv.classList.add("hide");
+  waveConfigDiv.classList.add("hide");
+  optionsMenu.classList.add("hide");
+}
+
+//write a function that exports if something was reset to the main game
+function rewriteLocalStorage() {
+  let reference = 0;
+  let localReference = localStorage.setItem("waveCounterLocal", reference);
+
+  console.log(reference);
+}
