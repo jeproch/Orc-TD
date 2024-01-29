@@ -51,7 +51,7 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
     console.log(hpMultiplier);
     HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   } else {
-    alert("insufficient currency need 10");
+    alert("insufficient currency need 10", "you have", orcCoins);
   }
 });
 
@@ -63,7 +63,7 @@ DPS_upgrade_BUTTON.addEventListener("click", function () {
     setDpsAsLocal();
     DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
   } else {
-    alert("insufficient currency need 10");
+    alert("insufficient currency need 10", "you have", orcCoins);
   }
 });
 
