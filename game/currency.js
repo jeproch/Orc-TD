@@ -1,6 +1,6 @@
 //currency's name is Orc coins
 
-import { waveCounter } from "./damage.js"; //DO NOT REMOVE THIS
+let waveCounter = localStorage.getItem("waveCounterLocal");
 let balancePar = document.getElementById("balance-p");
 let balanceMsg = "Balance: ";
 
@@ -22,11 +22,16 @@ let gamePage = document.getElementById("game");
 let upgradesPage = document.getElementById("upgrades-menu");
 let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
 
-let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter;
+let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter * 5;
+localStorage.setItem("orcCoinsLocal", orcCoins);
 
 document.addEventListener("DOMContentLoaded", function () {
   upgradesPage.classList.add("hide");
-  balancePar.textContent = balanceMsg + orcCoins;
+  balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
+  orcCoins = localStorage.getItem("orcCoinsLocal");
+  if (isNaN(parseFloat(orcCoins))) {
+    orcCoins = waveCounter * 5;
+  }
   HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
 });
@@ -42,28 +47,28 @@ BACK_BTN.addEventListener("click", function () {
 });
 
 HP_upgrade_BUTTON.addEventListener("click", function () {
-  if (orcCoins >= 10) {
+  if (localStorage.getItem("orcCoinsLocal") >= 10) {
     orcCoins -= 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
     balancePar.textContent = balanceMsg + orcCoins;
     setHpAsLocal();
     hpMultiplier = hpUgradeCounter;
     console.log(hpMultiplier);
     HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   } else {
-    alert("insufficient currency need 10", "you have", orcCoins);
+    alert("insufficient currency need 10" + "you have" + orcCoins);
+    console.log(orcCoins);
   }
 });
 
 DPS_upgrade_BUTTON.addEventListener("click", function () {
-  if (orcCoins >= 10) {
+  if (localStorage.getItem("orcCoinsLocal") >= 10) {
     orcCoins -= 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
     balancePar.textContent = balanceMsg + orcCoins;
     setDpsAsLocal();
     DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
   } else {
-    alert("insufficient currency need 10", "you have", orcCoins);
+    alert("insufficient currency need 10" + "you have" + orcCoins);
+    console.log(orcCoins);
   }
 });
 

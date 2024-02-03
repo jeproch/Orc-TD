@@ -8,7 +8,7 @@ let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
 var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
-let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter;
+let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter * 5;
 
 //More references
 const healthBar = document.getElementById("health-bar");
@@ -69,6 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(orcHealth);
   //Log orcDamage after the calculation
   console.log(orcDamage);
+  let balancePar = document.getElementById("balance-p");
+  let balanceMsg = "Balance: ";
+  balancePar.textContent = balanceMsg + orcCoins;
 });
 
 Move_ORC_BTN.addEventListener("click", function () {
@@ -185,7 +188,7 @@ function orcIsDead() {
   showDeadOrc();
   restoreButtonVisibilityInWave();
   incrementWave();
-  orcCoins++;
+  orcCoins += 5;
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
   balancePar.textContent = balanceMsg + orcCoins;
