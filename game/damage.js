@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
   drawTowerHealthBar();
   towerHealthPercentage();
   console.log(orcHealthAdvances);
+  if (isNaN(orcCoins)) {
+    orcCoins = waveCounter * 5;
+  }
   console.log(orcCoins);
 
   // Perform other operations
@@ -71,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(orcDamage);
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
+  balancePar.textContent = "";
   balancePar.textContent = balanceMsg + orcCoins;
 });
 
@@ -191,6 +195,7 @@ function orcIsDead() {
   orcCoins += 5;
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
+  balancePar.textContent = "";
   balancePar.textContent = balanceMsg + orcCoins;
 }
 
