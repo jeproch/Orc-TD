@@ -49,11 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
   drawOrcHealthBar();
   drawTowerHealthBar();
   towerHealthPercentage();
-  console.log(orcHealthAdvances);
   if (isNaN(orcCoins)) {
     orcCoins = waveCounter * 5;
   }
-  console.log(orcCoins);
 
   // Perform other operations
   let orcHealth = 30 + orcHealthAdvances;
@@ -69,9 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Log orcHealth after the calculation
-  console.log(orcHealth);
+
   //Log orcDamage after the calculation
-  console.log(orcDamage);
+
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
   balancePar.textContent = "";
@@ -87,7 +85,6 @@ Move_ORC_BTN.addEventListener("click", function () {
   applyTowerUpgrades(); // it starts the session with the upgrades and keeps those same values whole way through
   syncUpgrades();
   currentLeft = 85;
-  console.log(towerHealth);
   towerMaxHealth = towerHealth;
 
   orcCanvas.style.backgroundImage = `url("../game/assets/Orcs/Orc 1 - Unact.png")`;
@@ -111,7 +108,6 @@ function startWave() {
     // inside the orcHealth object (if it's an object)
     orcHealth = 30 + orcHealthAdvances;
     orcMaxHealth = orcHealth;
-    console.log(orcMaxHealth);
     towerMaxHealth = 100 + hpMultiplier * 2; // Update towerMaxHealth
     towerHealth = towerMaxHealth; // Reset towerHealth to full
     drawOrcHealthBar();
@@ -159,16 +155,11 @@ function attackTower() {
     orcDamage = 10 + orcDamageAdvances;
     orcHealth -= towerDamage; //tower damage is what the tower does to opponents
     towerHealth -= orcDamage;
-    console.log("this is the orc damage inside the attack function", orcDamage);
     drawOrcHealthBar();
     drawTowerHealthBar();
     towerHealthPercentage();
 
     if (orcHealth <= 0 || towerHealth <= 0) {
-      console.log("The tower or Orc has died");
-      console.log("Tower health: " + towerHealth + " Orc health: " + orcHealth);
-      console.log("Tower damage: " + towerDamage + " Orc damage: " + orcDamage);
-
       waveActive = false;
 
       if (orcHealth <= 0) {
@@ -201,7 +192,6 @@ function orcIsDead() {
 
 function towerIsDead() {
   towerHealth = 0;
-  console.log("Wave lost");
   clearInterval(damageInterval);
   restoreButtonVisibilityInWave();
 }
@@ -213,7 +203,6 @@ function showDeadOrc() {
 
 function incrementWave() {
   waveCounter++;
-  console.log("Wave counter: " + waveCounter);
   waveCounterEl.textContent = "Waves Complete: " + waveCounter;
   //localStorage.setItem("myKey", myVariable);
   localStorage.setItem("waveCounterLocal", waveCounter);

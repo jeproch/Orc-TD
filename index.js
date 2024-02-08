@@ -8,14 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (isMobile === true) {
     window.location.href = "mobile.html";
-  } else {
-    console.log("is pc");
   }
 });
 
 //Start the game
 
 function startButton() {
-  console.log("start");
   window.location.href = "./game/game.html";
 }

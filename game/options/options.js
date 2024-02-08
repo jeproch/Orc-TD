@@ -22,7 +22,6 @@ let OPEN_MENU_BUTTON = document.getElementById("open-menu");
 let audioInput = document.getElementById("volumeControl");
 
 OPEN_MENU_BUTTON.addEventListener("click", function () {
-  console.log("open menu buttons");
   notOptionsMenu.classList.add("hide");
   optionsMenu.classList.remove("hide");
 });
@@ -33,7 +32,6 @@ BACK_BTN.addEventListener("click", function () {
 });
 
 RESET_BTN.addEventListener("click", function () {
-  console.log("reset button");
   waveConfigDiv.classList.remove("hide");
   audioConfigDiv.classList.add("hide");
 });
@@ -52,7 +50,6 @@ function hideInitially() {
 
 CONFIRM_RESET_BTN.addEventListener("click", () => {
   rewriteLocalStorage();
-  console.log(localStorage.getItem("waveCounterLocal"));
   waveConfigDiv.classList.add("hide");
 });
 
@@ -70,20 +67,16 @@ let clickVolume;
 
 AUDIO_BTN.addEventListener("click", function () {
   clickVolume = localStorage.getItem("localSoundVolume") || 0.5;
-  console.log("audio button");
   audioConfigDiv.classList.remove("hide");
   waveConfigDiv.classList.add("hide");
   runAudioInt = setInterval(function () {
     clickVolume = audioInput.value / 100;
-    console.log(clickVolume);
   }, 500);
 });
 
 CONFIRM_AUDIO_BUTTON.addEventListener("click", function () {
   clickVolume = Number(clickVolume.toFixed(1));
   localStorage.setItem("localSoundVolume", clickVolume);
-
-  console.log(localStorage.getItem("localSoundVolume"));
 
   clearInterval(runAudioInt);
   audioConfigDiv.classList.add("hide");

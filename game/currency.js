@@ -71,7 +71,6 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
     balancePar.textContent = balanceMsg + orcCoins;
     setHpAsLocal();
     hpMultiplier = hpUgradeCounter;
-    console.log(hpMultiplier);
     HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   } else {
     //alert("insufficient currency need 10" + "you have" + orcCoins);
