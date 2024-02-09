@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
     orcCoins = waveCounter * 5;
   }
 
+  //check to see what the data type of orccoins might be
+  console.log(typeof orcCoins);
+
   // Perform other operations
   let orcHealth = 30 + orcHealthAdvances;
   if (isNaN(orcHealth)) {
