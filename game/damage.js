@@ -11,6 +11,9 @@ var waveCounter = parseInt(localStorage.getItem("waveCounterLocal") || 0);
 let orcCoins =
   parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
 
+function setWaveCounter() {
+  localStorage.setItem("waveConterLocal", waveCounter);
+}
 //More references
 const healthBar = document.getElementById("health-bar");
 const towerHealthBar = document.getElementById("tower-health-bar");
@@ -50,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   drawOrcHealthBar();
   drawTowerHealthBar();
   towerHealthPercentage();
+  setWaveCounter();
   if (isNaN(orcCoins)) {
     orcCoins = parseInt(waveCounter) * 5;
     parseInt(orcCoins);
@@ -58,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //check to see what the data type of orccoins might be
   console.log(typeof orcCoins); // output was string
+  console.log(typeof waveCounter);
 
   // Perform other operations
   let orcHealth = 30 + orcHealthAdvances;
