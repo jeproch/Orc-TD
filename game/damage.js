@@ -7,7 +7,7 @@ let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
-var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
+var waveCounter = parseInt(localStorage.getItem("waveCounterLocal") || 0);
 let orcCoins =
   parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
 
@@ -90,6 +90,13 @@ Move_ORC_BTN.addEventListener("click", function () {
   drawOrcHealthBar();
   applyTowerUpgrades(); // it starts the session with the upgrades and keeps those same values whole way through
   syncUpgrades();
+
+  if (waveCounter === null) {
+    waveCounter = 0;
+    waveCounterEl.textContent = "Waves Complete: " + waveCounter;
+  } else {
+    waveCounterEl.textContent = "Waves Complete: " + waveCounter;
+  }
   currentLeft = 85;
   towerMaxHealth = towerHealth;
 
