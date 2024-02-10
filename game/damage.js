@@ -8,7 +8,8 @@ let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
 var waveCounter = localStorage.getItem("waveCounterLocal") || 0;
-let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter * 5;
+let orcCoins =
+  parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
 
 //More references
 const healthBar = document.getElementById("health-bar");
@@ -50,11 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
   drawTowerHealthBar();
   towerHealthPercentage();
   if (isNaN(orcCoins)) {
-    orcCoins = waveCounter * 5;
+    orcCoins = parseInt(waveCounter) * 5;
+    parseInt(orcCoins);
   }
+  parseInt(orcCoins);
 
   //check to see what the data type of orccoins might be
-  console.log(typeof orcCoins);
+  console.log(typeof orcCoins); // output was string
 
   // Perform other operations
   let orcHealth = 30 + orcHealthAdvances;
@@ -186,11 +189,11 @@ function orcIsDead() {
   showDeadOrc();
   restoreButtonVisibilityInWave();
   incrementWave();
-  orcCoins += 5;
+  orcCoins += 5; // Simply add 5 to orcCoins
+  localStorage.setItem("orcCoinsLocal", orcCoins); // Update orcCoins in local storage
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
-  balancePar.textContent = "";
-  balancePar.textContent = balanceMsg + orcCoins;
+  balancePar.textContent = balanceMsg + orcCoins; // Update balancePar directly with orcCoins
 }
 
 function towerIsDead() {

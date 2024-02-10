@@ -35,7 +35,9 @@ let gamePage = document.getElementById("game");
 let upgradesPage = document.getElementById("upgrades-menu");
 let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
 
-let orcCoins = localStorage.getItem("orcCoinsLocal") || waveCounter * 5;
+let orcCoins =
+  parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
+
 function setLocalStorage() {
   localStorage.setItem("orcCoinsLocal", orcCoins);
 } // make sure the local storage has this stored
@@ -48,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (
     isNaN(parseFloat(localStorage.getItem("orcCoinsLocal") || waveCounter * 5))
   ) {
-    orcCoins = waveCounter * 5;
+    orcCoins = parseInt(waveCounter) * 5;
   }
   HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
