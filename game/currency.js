@@ -18,16 +18,6 @@ let UPGRADES_BTN = document.getElementById("upgrades-btn");
 let HP_upgrade_BUTTON = document.getElementById("hp-upgrade-btn");
 let DPS_upgrade_BUTTON = document.getElementById("dps-upgrade-btn");
 
-//errors on currency based things
-
-/*
-<div class="currency-based-errors" id="errors-div">
-        <!--For all cases where the user does not have enough orccoins-->
-        <p id="error-display"></p>
-      </div>
-
-*/
-
 let errorDiv = document.getElementById("errors-div");
 let errorParagraph = document.getElementById("error-display");
 
