@@ -6,15 +6,12 @@ body {
 }
 
 .wave-counter {
-  width: 20vw;
-  height: 3vh;
-  font-size: 30px;
-  white-space: nowrap;
-  color: black;
+  width: 20%;
+  font-size: 2.5vw;
   position: absolute;
-  top: 10px; /* Adjust the top position as needed */
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  align-content: center;
+  margin-left: 40vw;
 }
 
 .wave-counter p {
@@ -28,12 +25,12 @@ body {
   color: black;
   z-index: 1;
   height: 7vh;
-  width: 100px;
-  font-size: 30px;
+  width: 10%;
+  font-size: 2.5vw;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin-bottom: 14vh;
-  margin-right: 8vw;
+  margin-bottom: 7vh;
+  margin-right: 4vw;
   border-radius: 10%;
   background-color: yellow;
   border: none;
@@ -41,15 +38,15 @@ body {
 
 .move-orc button:hover {
   transition: 0.3s ease-in-out;
-  width: 110px;
+  width: 11%;
 }
 
 #next-wave-btn {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  opacity: 100%; /* To stop wave complete div override otherwise this would have 50 op */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
 }
 
 .smooth-transition {
@@ -70,7 +67,7 @@ body {
   background-position: center center;
   border: none;
   margin: 0;
-  z-index: 0; /* Set a default z-index for the game container */
+  z-index: 0;
 }
 
 .tower {
@@ -83,7 +80,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  margin-bottom: 200px;
+  margin-bottom: 20vw;
 }
 
 .hide {
@@ -94,9 +91,9 @@ body {
 
 .heading-image {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
 }
 
@@ -109,9 +106,9 @@ body {
 
 .buttons {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
 
@@ -119,7 +116,7 @@ body {
   background-color: yellow;
   border: 3px solid black;
   border-radius: 15%;
-  margin: 5px 0; /* Add margin for spacing between buttons */
+  margin: 5px 0;
   padding: 30px;
   font-size: 15px;
   font-weight: bold;
@@ -150,7 +147,6 @@ body {
 .orc-path canvas {
   width: 73vw;
   height: 30vh;
-  /* left: 22vw; */
   z-index: 1;
   position: absolute;
   opacity: 50%;
@@ -160,9 +156,8 @@ body {
 .orc {
   width: 7vw;
   height: 15vh;
-  position: relative; /* Set the element to absolute position */
-  top: 40vh; /* Adjust this value to position the orc canvas vertically */
-  /* left is 85vw */
+  position: relative;
+  top: 40vh;
   z-index: 2;
   background-size: contain;
   background-repeat: no-repeat;
@@ -171,9 +166,9 @@ body {
 .health-bar {
   position: absolute;
   top: -12px;
-  width: 100%; /* Full width of the orc element */
-  height: 10px; /* Adjust the height as needed */
-  background-color: green; /* Initial health bar color */
+  width: 100%;
+  height: 10px;
+  background-color: green;
 }
 
 .tower-health-bar {
@@ -194,17 +189,17 @@ body {
   border: 4px solid #000;
   z-index: 1;
   background-color: transparent;
-  box-sizing: border-box; /* Ensures that border is included in the size */
+  box-sizing: border-box;
   border-radius: 1%;
 }
 
 .health-text {
   position: absolute;
-  top: 140%; /* Adjust as needed */
-  left: 30%; /* Adjust as needed */
-  transform: translate(-50%, -50%); /* Center the text */
-  z-index: 3; /* Place above the border and health bar */
-  color: white; /* Adjust text color */
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: white;
 }
 
 .move-orc image {
@@ -230,12 +225,10 @@ body {
   font-size: 55px;
 }
 
-/* Treat menu as different page*/
-
 .menu {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Added this line */
+  justify-content: center;
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -248,12 +241,12 @@ body {
   background-color: yellow;
   border-color: black;
   border-radius: 3%;
-  width: 20vw;
+  width: 20%;
   height: 13vh;
-  margin-bottom: 30px;
-  font-size: 50px;
-  margin-left: auto; /* Added this line */
-  margin-right: auto; /* Added this line */
+  margin-bottom: 3vw;
+  font-size: 2.5vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .menu button:hover {
@@ -263,7 +256,7 @@ body {
 }
 
 .menu-buttons button {
-  margin-top: 40px;
+  margin-top: 2vw;
   border: 5px solid black;
 }
 
@@ -274,12 +267,12 @@ body {
   color: black;
   z-index: 1;
   height: 7vh;
-  width: 170px;
-  font-size: 30px;
+  width: 14%;
+  font-size: 2.5vw;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin-bottom: 5vh;
-  margin-right: 8vw;
+  margin-bottom: 3.5vw;
+  margin-right: 4vw;
   border-radius: 10%;
   background-color: yellow;
   border: none;
@@ -287,7 +280,7 @@ body {
 
 .upgrades button:hover {
   transition: 0.3s ease-in-out;
-  width: 200px;
+  width: 16%;
 }
 
 .upgrades-menu {
@@ -295,34 +288,34 @@ body {
   width: 100vw;
   background-color: yellow;
   margin: 0;
-  z-index: 2; /* Increase the z-index for the upgrades menu */
+  z-index: 2;
   color: black;
   text-align: center;
 }
 
 .upgrades-menu button {
   background-color: yellow;
-  border: 3px solid black;
+  border: 0.5vw solid black;
   border-radius: 15%;
-  margin: 5px 0; /* Add margin for spacing between buttons */
-  padding: 30px;
-  font-size: 15px;
+  margin: 1vw 0;
+  padding: 2vw;
+  font-size: 1.5vw;
   font-weight: bold;
-  width: 175px;
+  width: 9vw;
 }
 
 .upgrades-menu button:hover {
   transition: 0.3s ease-in-out;
   background-color: black;
-  border: 4px solid yellow;
+  border: 0.6vw solid yellow;
   color: yellow;
   border-radius: 17px;
-  width: 200px;
+  width: 10vw;
 }
 
 #back-to-menu-from-upgrades {
-  position: fixed; /* Fixed positioning */
-  bottom: 0; /* Align to the bottom of the viewport */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Center horizontally */
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
