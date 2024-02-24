@@ -57,9 +57,9 @@ BACK_BTN.addEventListener("click", function () {
 });
 
 HP_upgrade_BUTTON.addEventListener("click", function () {
-  if (orcCoins >= 10) {
+  if (localStorage.getItem("orcCoinsLocal") >= 10) {
     orcCoins -= 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
+    localStorage.setItem("orcCoinsLocal", orcCoins - 10);
     balancePar.textContent = balanceMsg + orcCoins;
     setHpAsLocal();
     hpMultiplier = hpUgradeCounter;
@@ -74,9 +74,9 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
 });
 
 DPS_upgrade_BUTTON.addEventListener("click", function () {
-  if (orcCoins >= 10) {
+  if (localStorage.getItem("orcCoinsLocal") >= 10) {
     orcCoins -= 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
+    localStorage.setItem("orcCoinsLocal", orcCoins - 10);
     balancePar.textContent = balanceMsg + orcCoins;
     setDpsAsLocal();
     DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
