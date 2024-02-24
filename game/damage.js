@@ -195,6 +195,40 @@ function attackTower() {
   }, 500);
 }
 
+/* 
+function attackTower() {
+  const towerDamage =  20 + dpsMultiplier;
+  const damageInterval = setInterval(() => {
+    const orcDamage =  10 + orcDamageAdvances;
+    orcHealth -= towerDamage;
+    towerHealth -= orcDamage;
+    drawHealthBars();
+
+    if (orcHealth <=  0 || towerHealth <=  0) {
+      waveActive = false;
+      handleDeath();
+      clearInterval(damageInterval);
+    }
+  },  500);
+}
+
+function drawHealthBars() {
+  drawOrcHealthBar();
+  drawTowerHealthBar();
+  towerHealthPercentage();
+}
+
+function handleDeath() {
+  if (orcHealth <=  0) {
+    orcIsDead();
+  } else if (towerHealth <=  0) {
+    towerIsDead();
+  }
+  drawHealthBars();
+}
+
+*/
+
 function orcIsDead() {
   orcHealth = 0;
   clearInterval(damageInterval);
