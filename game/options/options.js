@@ -57,6 +57,15 @@ CONFIRM_RESET_BTN.addEventListener("click", () => {
 function rewriteLocalStorage() {
   let reference = 0;
   let localReference = localStorage.setItem("waveCounterLocal", reference);
+  localReference = localStorage.setItem("orcCoinsLocal", reference);
+  //upgrades as well
+  localReference = localStorage.setItem("dpsUpgradeCounterLocal", reference);
+  localReference = localStorage.setItem("hpUpgradeCounterLocal", reference);
+  /* 
+  STORAGE::
+  Storage { orcCoinsLocal: "-20", alertShown: "true", waveConterLocal: "0", dpsUpgradeCounterLocal: "10",
+   waveCounterLocal: "1", hpUpgradeCounterLocal: "13", length: 6 }
+  */
 }
 
 //audio
