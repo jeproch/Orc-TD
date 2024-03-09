@@ -11,6 +11,15 @@ var dpsMultiplier = parseFloat(
   localStorage.getItem("dpsUpgradeCounterLocal") || 1
 );
 
+if (isNaN(dpsMultiplier)) {
+  // Handle the case where the value is not a valid number
+  console.error(
+    "Invalid value for dpsUpgradeCounterLocal:",
+    localStorage.getItem("dpsUpgradeCounterLocal")
+  );
+  dpsMultiplier = 1; // Set a default value or take appropriate action
+}
+
 let hpUgradeCounter = localStorage.getItem("hpUpgradeCounterLocal") || 0;
 let dpsUpgradeCounter = localStorage.getItem("dpsUpgradeCounterLocal") || 0;
 
