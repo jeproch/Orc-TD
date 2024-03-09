@@ -14,6 +14,7 @@ let orcCoins =
 function setWaveCounter() {
   localStorage.setItem("waveConterLocal", waveCounter);
 }
+
 //More references
 const healthBar = document.getElementById("health-bar");
 const towerHealthBar = document.getElementById("tower-health-bar");
@@ -134,13 +135,15 @@ function startWave() {
 }
 
 function syncUpgrades() {
+  //hp
+
   if (
     hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
   ) {
     hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
   }
 
-  //dps too
+  //dps
 
   if (
     dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
