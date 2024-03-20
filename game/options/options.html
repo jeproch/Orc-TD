@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orc TD Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="not-options" id="not-options">
+      <div class="heading">
+        <h1>Options</h1>
+        <h2>Configure Your Experience Here:</h2>
+        <ion-icon
+          name="menu-outline"
+          class="options-to-home-btn"
+          id="open-menu"
+        ></ion-icon>
+      </div>
+
+      <div class="buttons">
+        <button id="reset-btn">Reset Waves</button>
+        <button id="audio-btn">Audio</button>
+      </div>
+
+      <div class="audio-config" id="audio-config">
+        <h2>Audio:</h2>
+        <div class="input-field-audio">
+          <input
+            type="range"
+            id="volumeControl"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+          />
+
+          <button id="volume-confirm-btn">Confirm</button>
+        </div>
+      </div>
+
+      <div class="wave-config" id="wave-config">
+        <p>Are you sure you want to reset your progress?</p>
+        <button id="reset-confirm-btn">Yes</button>
+      </div>
+    </div>
+
+    <div class="options-menu" id="options-menu">
+      <button id="home-btn" class="home-btn">Return Home</button>
+      <button id="back-btn" class="back-btn">Back</button>
+    </div>
+
+    <script src="options.js" type="module" defer></script>
+    <script src="../options/options.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

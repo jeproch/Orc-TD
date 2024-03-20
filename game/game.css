@@ -1,0 +1,322 @@
+body {
+  background-color: rgb(255, 255, 0);
+  z-index: -2;
+  margin: 0;
+  overflow: hidden;
+}
+
+.wave-counter {
+  width: 20%;
+  font-size: 2.5vw;
+  position: absolute;
+  text-align: center;
+  align-content: center;
+  margin-left: 40vw;
+}
+
+.wave-counter p {
+  margin: 0;
+}
+
+.move-orc button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: black;
+  z-index: 1;
+  height: 7vh;
+  width: 10%;
+  font-size: 2.5vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 15vh;
+  margin-right: 4vw;
+  border-radius: 10%;
+  background-color: yellow;
+  border: none;
+}
+
+.move-orc button:hover {
+  transition: 0.3s ease-in-out;
+  width: 11%;
+}
+
+#next-wave-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
+}
+
+.smooth-transition {
+  transition: 0.3s ease-in-out;
+}
+
+.black-background {
+  background-color: black;
+  z-index: -1;
+}
+
+.game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("assets/battleground.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 108vw;
+  border: none;
+  margin: 0;
+  z-index: 0;
+}
+
+.tower {
+  width: 20vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  margin-bottom: 20vw;
+}
+
+.hide {
+  opacity: 0;
+  display: none;
+  transition: 0.3s ease-in-out;
+}
+
+.heading-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.heading-image img {
+  border: 5px solid black;
+  width: 350px;
+  height: 200px;
+  border-radius: 15%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  background-color: yellow;
+  border: 3px solid black;
+  border-radius: 15%;
+  margin: 5px 0;
+  padding: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 175px;
+}
+
+.buttons button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: black;
+  border: 4px solid yellow;
+  color: yellow;
+  border-radius: 17px;
+  width: 200px;
+}
+
+.display-version p {
+  color: black;
+  position: absolute;
+  top: 95%;
+}
+
+/* ORCS */
+
+.orc-path {
+  position: relative;
+}
+
+.orc-path canvas {
+  width: 73vw;
+  height: 30vh;
+  z-index: 1;
+  position: absolute;
+  opacity: 50%;
+  top: 35vh;
+}
+
+.orc {
+  width: 7vw;
+  height: 15vh;
+  position: relative;
+  top: 40vh;
+  z-index: 2;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.health-bar {
+  position: absolute;
+  top: -12px;
+  width: 100%;
+  height: 10px;
+  background-color: green;
+}
+
+.tower-health-bar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: green;
+}
+
+.tower-health-bar-border {
+  position: absolute;
+  overflow: hidden;
+  top: 73vh;
+  left: 1.6vw;
+  width: 200%;
+  height: 20%;
+  border: 4px solid #000;
+  z-index: 1;
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 1%;
+}
+
+.health-text {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: white;
+}
+
+.move-orc image {
+  position: relative;
+  z-index: 2;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  color: black;
+  margin-right: 2vw;
+  margin-top: 1.5vh;
+  font-size: 50px;
+}
+
+.menu-btn:hover {
+  transition: 0.1s ease-in-out;
+  font-size: 55px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: yellow;
+  position: relative;
+}
+
+.menu Button {
+  display: block;
+  background-color: yellow;
+  border-color: black;
+  border-radius: 3%;
+  width: 20%;
+  height: 13vh;
+  margin-bottom: 3vw;
+  font-size: 2.5vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu button:hover {
+  background-color: rgb(196, 196, 55);
+  transition: 0.1s ease-in-out;
+  border-radius: 15%;
+}
+
+.menu-buttons button {
+  margin-top: 2vw;
+  border: 5px solid black;
+}
+
+.upgrades button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: black;
+  z-index: 1;
+  height: 7vh;
+  width: 14%;
+  font-size: 2.5vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 3.5vw;
+  margin-right: 4vw;
+  border-radius: 10%;
+  background-color: yellow;
+  border: none;
+}
+
+.upgrades button:hover {
+  transition: 0.3s ease-in-out;
+  width: 16%;
+}
+
+.upgrades-menu {
+  height: 100vh;
+  width: 100vw;
+  background-color: yellow;
+  margin: 0;
+  z-index: 2;
+  color: black;
+  text-align: center;
+}
+
+.upgrades-menu button {
+  background-color: yellow;
+  border: 0.5vw solid black;
+  border-radius: 15%;
+  margin: 1vw 0;
+  padding: 2vw;
+  font-size: 1.5vw;
+  font-weight: bold;
+  width: 9vw;
+}
+
+.upgrades-menu button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: black;
+  border: 0.6vw solid yellow;
+  color: yellow;
+  border-radius: 17px;
+  width: 10vw;
+}
+
+#back-to-menu-from-upgrades {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}

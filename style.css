@@ -1,0 +1,51 @@
+body {
+  background-color: rgb(255, 255, 0);
+}
+
+.heading {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: black;
+}
+
+.heading h1 {
+  font-size: 50px;
+}
+
+.heading h2 {
+  font-size: 30px;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* This is optional to vertically center the button too */
+}
+
+.middle button {
+  text-align: center;
+  padding: 40px;
+  color: black;
+  background-color: aqua;
+  border-radius: 15%;
+  font-size: 30px;
+}
+
+.middle button:hover {
+  transition: 0.3s ease-in-out;
+  padding: 45px;
+  background-color: aquamarine;
+  border-radius: 18%;
+  border: none;
+  font-size: 40px;
+}
+
+hr {
+  margin: 0;
+  width: 99vw;
+  height: 3px;
+  background-color: black;
+  border: none;
+}
