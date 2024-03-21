@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
 
-  if (
-    isNaN(parseFloat(localStorage.getItem("orcCoinsLocal") || waveCounter * 5))
-  ) {
-    orcCoins = parseInt(waveCounter) * 5;
-  }
+  // if (
+  //   isNaN(parseFloat(localStorage.getItem("orcCoinsLocal") || waveCounter * 5))
+  // ) {
+  //   orcCoins = parseInt(waveCounter) * 5;
+  // }
   HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
 });

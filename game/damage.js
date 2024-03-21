@@ -61,6 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   parseInt(orcCoins);
 
+  //make sure the wave counter is never null 
+  if (waveCounter === null) {
+    waveCounter = 0;
+    waveCounterEl.textContent = "Waves Complete: " + waveCounter;
+  } else {
+    waveCounterEl.textContent = "Waves Complete: " + waveCounter;
+  }
+
   //check to see what the data type of orccoins might be
   console.log(typeof orcCoins); // output was string
   console.log(typeof waveCounter);
@@ -135,6 +143,9 @@ function startWave() {
 }
 
 function syncUpgrades() {
+
+  parseFloat(dpsMultiplier)
+  parseFloat(hpMultiplier)
   //hp
 
   if (
@@ -197,40 +208,6 @@ function attackTower() {
     }
   }, 500);
 }
-
-/* 
-function attackTower() {
-  const towerDamage =  20 + dpsMultiplier;
-  const damageInterval = setInterval(() => {
-    const orcDamage =  10 + orcDamageAdvances;
-    orcHealth -= towerDamage;
-    towerHealth -= orcDamage;
-    drawHealthBars();
-
-    if (orcHealth <=  0 || towerHealth <=  0) {
-      waveActive = false;
-      handleDeath();
-      clearInterval(damageInterval);
-    }
-  },  500);
-}
-
-function drawHealthBars() {
-  drawOrcHealthBar();
-  drawTowerHealthBar();
-  towerHealthPercentage();
-}
-
-function handleDeath() {
-  if (orcHealth <=  0) {
-    orcIsDead();
-  } else if (towerHealth <=  0) {
-    towerIsDead();
-  }
-  drawHealthBars();
-}
-
-*/
 
 function orcIsDead() {
   orcHealth = 0;
