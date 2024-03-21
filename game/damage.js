@@ -142,26 +142,28 @@ function startWave() {
   }
 }
 
-function syncUpgrades() {
+// function syncUpgrades() {
 
-  parseFloat(dpsMultiplier)
-  parseFloat(hpMultiplier)
-  //hp
+//   parseFloat(dpsMultiplier)
+//   parseFloat(hpMultiplier)
+//   //hp
 
-  if (
-    hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
-  ) {
-    hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
-  }
+//   if (
+//     hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
+//   ) {
+//     hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
+//     localStorage.setItem("hpUpgradeCounterLocal", hpMultiplier)
+//   }
 
-  //dps
+//   //dps
 
-  if (
-    dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
-  ) {
-    dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"));
-  }
-}
+//   if (
+//     dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
+//   ) {
+//     dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"));
+//     localStorage.setItem("dpsUpgradeCounterLocal", dpsMultiplier);
+//   }
+// }
 
 function isAtEnd() {
   listenIsAtEndInt = setInterval(function () {

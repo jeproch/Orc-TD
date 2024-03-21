@@ -35,12 +35,12 @@ let upgradesPage = document.getElementById("upgrades-menu");
 let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
 
 let orcCoins =
-  parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
+  parseInt(localStorage.getItem("orcCoinsLocal"));
 
 function setLocalStorage() {
   localStorage.setItem("orcCoinsLocal", localStorage.getItem("orcCoinsLocal"));
-} // make sure the local storage has this stored
-balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
+  balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   upgradesPage.classList.add("hide");
@@ -50,13 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem("orcCoinsLocal") === 0) {
     balancePar.textContent = balanceMsg + "0";
   }
-  //balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
-
-  // if (
-  //   isNaN(parseFloat(localStorage.getItem("orcCoinsLocal") || waveCounter * 5))
-  // ) {
-  //   orcCoins = parseInt(waveCounter) * 5;
-  // }
   HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
 });
@@ -76,14 +69,14 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
   //console.log("Fixed variable" + orcCoins); *DISPLAYS 35 When it should be 30*
   //console.log("Reference to variable" + localStorage.getItem("orcCoinsLocal")); *Displays 30 correctly*
   if (localStorage.getItem("orcCoinsLocal") >= 10) {
-    //orcCoins -= 10;
-    localStorage.setItem(
-      "orcCoinsLocal",
-      localStorage.getItem("orcCoinsLocal") - 10
-    );
+    orcCoins = localStorage.getItem("orcCoinsLocal") - 10;
+    localStorage.setItem("orcCoinsLocal", orcCoins);
+    console.log(orcCoins)
+
     balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal"); //see what is the value here
     console.log("In the hp upgrade true event listener " + orcCoins);
     setHpAsLocal();
+    setLocalStorage()
     hpMultiplier = hpUgradeCounter;
     HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
   } else {
@@ -99,12 +92,13 @@ HP_upgrade_BUTTON.addEventListener("click", function () {
 DPS_upgrade_BUTTON.addEventListener("click", function () {
   if (localStorage.getItem("orcCoinsLocal") >= 10) {
     //orcCoins -= 10;
-    localStorage.setItem(
-      "orcCoinsLocal",
-      localStorage.getItem("orcCoinsLocal") - 10
-    );
+    orcCoins = localStorage.getItem("orcCoinsLocal") - 10;
+    localStorage.setItem("orcCoinsLocal", orcCoins);
+    console.log(orcCoins)
+
     balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
     setDpsAsLocal();
+    setLocalStorage()
     DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
   } else {
     //alert("insufficient currency need 10" + "you have" + orcCoins);
