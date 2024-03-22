@@ -1,4 +1,4 @@
-import { dpsMultiplier, hpMultiplier } from "./currency.js";
+//import { dpsMultiplier, hpMultiplier } from "./currency.js";
 import { orcHealthAdvances, orcDamageAdvances } from "./orc_development.js";
 
 /*References */
@@ -34,10 +34,10 @@ let viewWidth = "vw";
 orcPath.style.left = currentPath + viewWidth;
 
 /* Default values */
-let towerHealth = 100 + hpMultiplier; // For starting out, upgrades will increase this health
+let towerHealth = 100 ; // For starting out, upgrades will increase this health
 let towerMaxHealth = towerHealth;
 
-let towerDamage = 20 + dpsMultiplier;
+let towerDamage = 20;
 
 let damageInterval;
 let listenIsAtEndInt;
@@ -49,6 +49,8 @@ let orcHealth;
 let orcMaxHealth;
 let orcDamage;
 let percentage;
+
+let orcDead = false;
 
 document.addEventListener("DOMContentLoaded", function () {
   drawOrcHealthBar();
@@ -99,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 Move_ORC_BTN.addEventListener("click", function () {
   //decrease current left to work with the same variable
   waveActive = true;
+  orcDead = false;
   isAtEnd();
   startWave();
   drawOrcHealthBar();
@@ -141,29 +144,6 @@ function startWave() {
     drawTowerHealthBar();
   }
 }
-
-// function syncUpgrades() {
-
-//   parseFloat(dpsMultiplier)
-//   parseFloat(hpMultiplier)
-//   //hp
-
-//   if (
-//     hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
-//   ) {
-//     hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
-//     localStorage.setItem("hpUpgradeCounterLocal", hpMultiplier)
-//   }
-
-//   //dps
-
-//   if (
-//     dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
-//   ) {
-//     dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"));
-//     localStorage.setItem("dpsUpgradeCounterLocal", dpsMultiplier);
-//   }
-// }
 
 function isAtEnd() {
   listenIsAtEndInt = setInterval(function () {
@@ -217,11 +197,18 @@ function orcIsDead() {
   showDeadOrc();
   restoreButtonVisibilityInWave();
   incrementWave();
-  orcCoins += 5; // Simply add 5 to orcCoins
+  orcDead = true;
   localStorage.setItem("orcCoinsLocal", orcCoins); // Update orcCoins in local storage
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
   balancePar.textContent = balanceMsg + orcCoins; // Update balancePar directly with orcCoins
+}
+
+export function checkOrcDeath() {
+  // Logic to check if the orc is dead
+  if (orcDead) {
+      increaseCurrency();
+  }
 }
 
 function towerIsDead() {

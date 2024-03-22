@@ -1,124 +1,53 @@
-//currency's name is Orc coins
+// main.js
 
-let waveCounter = localStorage.getItem("waveCounterLocal");
-let balancePar = document.getElementById("balance-p");
-let balanceMsg = "Balance: ";
+import { checkOrcDeath } from './damage.js';
 
-var hpMultiplier = parseFloat(
-  localStorage.getItem("hpUpgradeCounterLocal") || 1
-);
-var dpsMultiplier = parseFloat(
-  localStorage.getItem("dpsUpgradeCounterLocal") || 1
-);
+// Call checkOrcDeath() when the orc is killed
 
-if (isNaN(dpsMultiplier)) {
-  // Handle the case where the value is not a valid number
-  console.error(
-    "Invalid value for dpsUpgradeCounterLocal:",
-    localStorage.getItem("dpsUpgradeCounterLocal")
-  );
-  dpsMultiplier = 1; // Set a default value or take appropriate action
+// Define a key for storing the currency data in localStorage
+const currencyKey = 'userCurrency';
+
+function writeCurrency(currency) {
+    // Convert currency to JSON format
+    const data = JSON.stringify(currency);
+
+    // Save data to localStorage
+    localStorage.setItem(currencyKey, data);
+    
+    console.log('Currency saved to localStorage:', currency);
 }
 
-let hpUgradeCounter = localStorage.getItem("hpUpgradeCounterLocal") || 0;
-let dpsUpgradeCounter = localStorage.getItem("dpsUpgradeCounterLocal") || 0;
+function readCurrency() {
+    // Read data from localStorage
+    const data = localStorage.getItem(currencyKey);
 
-let UPGRADES_BTN = document.getElementById("upgrades-btn");
-let HP_upgrade_BUTTON = document.getElementById("hp-upgrade-btn");
-let DPS_upgrade_BUTTON = document.getElementById("dps-upgrade-btn");
-
-let errorDiv = document.getElementById("errors-div");
-let errorParagraph = document.getElementById("error-display");
-
-let gamePage = document.getElementById("game");
-let upgradesPage = document.getElementById("upgrades-menu");
-let BACK_BTN = document.getElementById("back-to-menu-from-upgrades");
-
-let orcCoins =
-  parseInt(localStorage.getItem("orcCoinsLocal"));
-
-function setLocalStorage() {
-  localStorage.setItem("orcCoinsLocal", localStorage.getItem("orcCoinsLocal"));
-  balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
+    if (data) {
+        // Parse JSON-formatted data
+        return JSON.parse(data);
+    } else {
+        // If no data exists, return default currency
+        return { orcCoins: 0 };
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  upgradesPage.classList.add("hide");
-  errorDiv.classList.add("hide");
-  setLocalStorage();
-  localStorage.setItem("orcCoinsLocal", localStorage.getItem("orcCoinsLocal"));
-  if (localStorage.getItem("orcCoinsLocal") === 0) {
-    balancePar.textContent = balanceMsg + "0";
-  }
-  HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
-  DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
-});
 
-UPGRADES_BTN.addEventListener("click", function () {
-  gamePage.classList.add("hide");
-  upgradesPage.classList.remove("hide");
-});
+function increaseCurrency() {
+  // Read current currency
+  let userCurrency = readCurrency();
 
-BACK_BTN.addEventListener("click", function () {
-  gamePage.classList.remove("hide");
-  upgradesPage.classList.add("hide");
-  errorDiv.classList.add("hide");
-});
+  // Increase orcCoins by ten
+  userCurrency.orcCoins += 10;
 
-HP_upgrade_BUTTON.addEventListener("click", function () {
-  //console.log("Fixed variable" + orcCoins); *DISPLAYS 35 When it should be 30*
-  //console.log("Reference to variable" + localStorage.getItem("orcCoinsLocal")); *Displays 30 correctly*
-  if (localStorage.getItem("orcCoinsLocal") >= 10) {
-    orcCoins = localStorage.getItem("orcCoinsLocal") - 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
-    console.log(orcCoins)
-
-    balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal"); //see what is the value here
-    console.log("In the hp upgrade true event listener " + orcCoins);
-    setHpAsLocal();
-    setLocalStorage()
-    hpMultiplier = hpUgradeCounter;
-    HP_upgrade_BUTTON.innerText = "HP level: " + hpUgradeCounter;
-  } else {
-    //alert("insufficient currency need 10" + "you have" + orcCoins);
-    //console.log(orcCoins);
-    errorDiv.classList.remove("hide");
-    errorParagraph.textContent =
-      "Insufficient currency. You need 10 and you have " +
-      localStorage.getItem("orcCoinsLocal");
-  }
-});
-
-DPS_upgrade_BUTTON.addEventListener("click", function () {
-  if (localStorage.getItem("orcCoinsLocal") >= 10) {
-    //orcCoins -= 10;
-    orcCoins = localStorage.getItem("orcCoinsLocal") - 10;
-    localStorage.setItem("orcCoinsLocal", orcCoins);
-    console.log(orcCoins)
-
-    balancePar.textContent = balanceMsg + localStorage.getItem("orcCoinsLocal");
-    setDpsAsLocal();
-    setLocalStorage()
-    DPS_upgrade_BUTTON.innerHTML = "DPS level: " + dpsUpgradeCounter;
-  } else {
-    //alert("insufficient currency need 10" + "you have" + orcCoins);
-    //console.log(orcCoins);
-    errorDiv.classList.remove("hide");
-    errorParagraph.textContent =
-      "Insufficient currency. You need 10 and you have " +
-      localStorage.getItem("orcCoinsLocal");
-  }
-});
-
-function setHpAsLocal() {
-  hpUgradeCounter++;
-  localStorage.setItem("hpUpgradeCounterLocal", hpUgradeCounter);
+  // Write updated currency back
+  writeCurrency(userCurrency);
 }
 
-function setDpsAsLocal() {
-  dpsUpgradeCounter++;
-  localStorage.setItem("dpsUpgradeCounterLocal", dpsUpgradeCounter);
-}
+// Example usage
+const userCurrency = readCurrency();
+console.log('Current currency:', userCurrency);
 
-export { hpMultiplier as hpMultiplier };
-export { dpsMultiplier as dpsMultiplier };
+// Update orcCoins
+userCurrency.orcCoins += 100;
+
+// Write updated currency to localStorage
+writeCurrency(userCurrency);
