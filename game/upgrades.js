@@ -18,3 +18,5 @@ BACK_FROM_UPGRADES_BTN.addEventListener("click", function () {
   gameMenu.classList.remove("hide");
   upgrades_menu.classList.add("hide");
 });
+
+//write code for the actual upgrades

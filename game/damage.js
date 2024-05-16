@@ -6,10 +6,6 @@ let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 
 var waveCounter = parseInt(localStorage.getItem("waveCounterLocal") || 0);
 
-function setWaveCounter() {
-  localStorage.setItem("waveConterLocal", waveCounter);
-}
-
 //More references
 const healthBar = document.getElementById("health-bar");
 const towerHealthBar = document.getElementById("tower-health-bar");
@@ -49,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
   drawOrcHealthBar();
   drawTowerHealthBar();
   towerHealthPercentage();
-  setWaveCounter();
 
   //make sure the wave counter is never null
   if (waveCounter === null) {
