@@ -159,7 +159,7 @@ function syncUpgrades() {
   if (
     dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
   ) {
-    dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"));
+    dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal")); /* Why is this read only?? */
   }
 }
 
