@@ -1,6 +1,3 @@
-import { dpsMultiplier, hpMultiplier } from "./currency.js";
-import { orcHealthAdvances, orcDamageAdvances } from "./orc_development.js";
-
 /*References */
 const Move_ORC_BTN = document.getElementById("move-orc-btn");
 let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
@@ -8,8 +5,6 @@ let CONFIRM_RESET_BTN = document.getElementById("reset-confirm-btn");
 //Introduce a multiplier to make the orc harder to defeat so that upgrades may be brought into play
 
 var waveCounter = parseInt(localStorage.getItem("waveCounterLocal") || 0);
-let orcCoins =
-  parseInt(localStorage.getItem("orcCoinsLocal")) || waveCounter * 5;
 
 function setWaveCounter() {
   localStorage.setItem("waveConterLocal", waveCounter);
@@ -34,10 +29,10 @@ let viewWidth = "vw";
 orcPath.style.left = currentPath + viewWidth;
 
 /* Default values */
-let towerHealth = 100 + hpMultiplier; // For starting out, upgrades will increase this health
+let towerHealth = 100; // For starting out, upgrades will increase this health
 let towerMaxHealth = towerHealth;
 
-let towerDamage = 20 + dpsMultiplier;
+let towerDamage = 20;
 
 let damageInterval;
 let listenIsAtEndInt;
@@ -55,13 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
   drawTowerHealthBar();
   towerHealthPercentage();
   setWaveCounter();
-  if (isNaN(orcCoins)) {
-    orcCoins = parseInt(waveCounter) * 5;
-    parseInt(orcCoins);
-  }
-  parseInt(orcCoins);
 
-  //make sure the wave counter is never null 
+  //make sure the wave counter is never null
   if (waveCounter === null) {
     waveCounter = 0;
     waveCounterEl.textContent = "Waves Complete: " + waveCounter;
@@ -74,16 +64,16 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(typeof waveCounter);
 
   // Perform other operations
-  let orcHealth = 30 + orcHealthAdvances;
+  let orcHealth = 30;
   if (isNaN(orcHealth)) {
     orcHealth = 30 + orcHealthAdvances;
   }
   let orcMaxHealth = orcHealth;
 
-  let orcDamage = 10 + orcDamageAdvances;
+  let orcDamage = 10;
 
   if (isNaN(orcDamage)) {
-    orcDamage = 10 + orcDamageAdvances;
+    orcDamage = 10;
   }
 
   // Log orcHealth after the calculation
@@ -93,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
   balancePar.textContent = "";
-  balancePar.textContent = balanceMsg + orcCoins;
+  balancePar.textContent = balanceMsg + 0;
 });
 
 Move_ORC_BTN.addEventListener("click", function () {
@@ -102,8 +92,6 @@ Move_ORC_BTN.addEventListener("click", function () {
   isAtEnd();
   startWave();
   drawOrcHealthBar();
-  applyTowerUpgrades(); // it starts the session with the upgrades and keeps those same values whole way through
-  syncUpgrades();
 
   if (waveCounter === null) {
     waveCounter = 0;
@@ -133,33 +121,12 @@ function startWave() {
   if (waveActive === true) {
     // Update orcHealth indirectly, for example, by modifying properties
     // inside the orcHealth object (if it's an object)
-    orcHealth = 30 + orcHealthAdvances;
+    orcHealth = 30;
     orcMaxHealth = orcHealth;
-    towerMaxHealth = 100 + hpMultiplier * 2; // Update towerMaxHealth
+    towerMaxHealth = 100; // Update towerMaxHealth
     towerHealth = towerMaxHealth; // Reset towerHealth to full
     drawOrcHealthBar();
     drawTowerHealthBar();
-  }
-}
-
-function syncUpgrades() {
-
-  parseFloat(dpsMultiplier)
-  parseFloat(hpMultiplier)
-  //hp
-
-  if (
-    hpMultiplier < parseFloat(localStorage.getItem("hpUpgradeCounterLocal"))
-  ) {
-    hpMultiplier = parseFloat(localStorage.getItem("hpUpgradeCounterLocal"));
-  }
-
-  //dps
-
-  if (
-    dpsMultiplier < parseFloat(localStorage.getItem("dpsUpgradeCounterLocal"))
-  ) {
-    dpsMultiplier = parseFloat(localStorage.getItem("dpsUpgradeCounterLocal")); /* Why is this read only?? */
   }
 }
 
@@ -182,9 +149,9 @@ function drawTowerHealthBar() {
 }
 
 function attackTower() {
-  towerDamage = 20 + dpsMultiplier;
+  towerDamage = 20;
   damageInterval = setInterval(function () {
-    orcDamage = 10 + orcDamageAdvances;
+    orcDamage = 10;
     orcHealth -= towerDamage; //tower damage is what the tower does to opponents
     towerHealth -= orcDamage;
     drawOrcHealthBar();
@@ -215,11 +182,9 @@ function orcIsDead() {
   showDeadOrc();
   restoreButtonVisibilityInWave();
   incrementWave();
-  orcCoins += 5; // Simply add 5 to orcCoins
-  localStorage.setItem("orcCoinsLocal", orcCoins); // Update orcCoins in local storage
   let balancePar = document.getElementById("balance-p");
   let balanceMsg = "Balance: ";
-  balancePar.textContent = balanceMsg + orcCoins; // Update balancePar directly with orcCoins
+  balancePar.textContent = balanceMsg + 0; // Update balancePar directly with orcCoins
 }
 
 function towerIsDead() {
@@ -260,11 +225,6 @@ function towerHealthPercentage() {
     percentage = 0;
     towerSpanHealthPerc.textContent = "Health: " + percentage + "%";
   }
-}
-
-function applyTowerUpgrades() {
-  towerHealth = 100 + hpMultiplier;
-  towerDamage = 20 + dpsMultiplier;
 }
 
 export { waveCounter as waveCounter };
